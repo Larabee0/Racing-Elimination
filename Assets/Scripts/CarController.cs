@@ -27,9 +27,7 @@ public class CarController : MonoBehaviour
 
         Transform visualWheel = collider.transform.GetChild(0);
 
-        Vector3 position;
-        Quaternion rotation;
-        collider.GetWorldPose(out position, out rotation);
+        collider.GetWorldPose(out Vector3 position, out Quaternion rotation);
 
         visualWheel.transform.position = position;
         visualWheel.transform.rotation = rotation;
