@@ -64,8 +64,8 @@ namespace PathCreation.Examples {
                 verts[vertIndex + 0] = vertSideA;
                 verts[vertIndex + 1] = vertSideB;
                 // Add bottom of road vertices
-                verts[vertIndex + 2] = vertSideA - localUp * thickness;
-                verts[vertIndex + 3] = vertSideB - localUp * thickness;
+                //verts[vertIndex + 2] = vertSideA - localUp * thickness;
+                //verts[vertIndex + 3] = vertSideB - localUp * thickness;
 
                 // Duplicate vertices to get flat shading for sides of road
                 verts[vertIndex + 4] = verts[vertIndex + 0];
