@@ -702,8 +702,8 @@ MonoBehaviour:
   FrontLeft: {fileID: 8022791585415113949}
   RearRight: {fileID: 8022791584814552518}
   RearLeft: {fileID: 8022791586469965167}
-  frontWheelMotorTorque: 50
-  rearWheelMotorTorque: 150
+  frontWheelMotorTorque: 100
+  rearWheelMotorTorque: 100
   frontWheelBreakTorque: 200
   rearWheelBreakTorque: 200
   HandBreakForce: 1000
