@@ -10,7 +10,7 @@ public class AxleInfo
     public bool steering;
 }
 
-public class CarController : MonoBehaviour
+public class CarControllerOld : MonoBehaviour
 {
     public List<AxleInfo> axleInfos;
     public float maxMotorTorque;
