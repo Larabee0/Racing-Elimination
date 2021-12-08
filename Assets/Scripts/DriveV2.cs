@@ -9,6 +9,9 @@ public class DriveV2 : MonoBehaviour
     public WheelCollider RearRight;
     public WheelCollider RearLeft;
 
+
+    public AnimationCurve torqueCurve;
+
     public float frontWheelMotorTorque;
     public float rearWheelMotorTorque;
 
@@ -35,7 +38,7 @@ public class DriveV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(RearLeft.rpm);
+        Debug.Log("Steer:"+FrontRight.steerAngle+" FR:" + FrontRight.rpm + " FL:" + FrontLeft.rpm + " RR:" + RearRight.rpm + " RL:" + RearLeft.rpm);
         if (((RearLeft.rpm > 0 && RearLeft.rpm < float.Epsilon) || (RearLeft.rpm < 0 && RearLeft.rpm > -float.Epsilon) || RearLeft.rpm == 0) && DirectionLock != Direction.Stop && IsBreaking)
         {
             DirectionLock = Direction.Stop;
@@ -67,7 +70,28 @@ public class DriveV2 : MonoBehaviour
 
         if (DirectionLock == Direction.Foward)
         {
-            RearMotorTorque = FrontMotorTorque = Input.GetAxis("Vertical") < 0 ? 0 : Input.GetAxis("Vertical");
+            float input = Input.GetAxis("Vertical") < 0 ? 0 : Input.GetAxis("Vertical");
+            FrontMotorTorque = RearMotorTorque = input;
+            //if (RearLeft.rpm > FrontLeft.rpm)
+            //{
+            //    float value = 1 - (FrontLeft.rpm / RearLeft.rpm);
+            //    if(value > 0.5f)
+            //    {
+            //        // break
+            //        RearBreakTorque = value;
+            //        //Debug.Log("TC breaking.");
+            //    }
+            //    else
+            //    {
+            //        // accelerate less
+            //        RearMotorTorque = value;
+            //        //Debug.Log("TC lowered throttle.");
+            //    }
+            //}
+            //if(RearLeft.rpm > FrontLeft.rpm)
+            //{
+            //    Debug.Log("TC Intervening.");
+            //}
             float isBreaking = RearBreakTorque = FrontBreakTorque = Input.GetAxis("Vertical") > 0 ? 0 : -Input.GetAxis("Vertical");
             IsBreaking = isBreaking > 0;
         }
@@ -83,5 +107,10 @@ public class DriveV2 : MonoBehaviour
             FrontBreakTorqueRaw = RearBreakTorqueRaw = 1000;
             IsBreaking = true;
         }
+    }
+
+    private void TorqueCurveRead()
+    {
+        
     }
 }
