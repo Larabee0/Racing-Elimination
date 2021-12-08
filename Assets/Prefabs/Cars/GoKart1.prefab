@@ -61,7 +61,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.3
   m_Enabled: 1
 --- !u!1 &8022791584941955642
 GameObject:
@@ -702,6 +702,57 @@ MonoBehaviour:
   FrontLeft: {fileID: 8022791585415113949}
   RearRight: {fileID: 8022791584814552518}
   RearLeft: {fileID: 8022791586469965167}
+  torqueCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0013008118
+      value: 0.3996139
+      inSlope: 0.33634365
+      outSlope: 0.33634365
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.6981326
+    - serializedVersion: 3
+      time: 0.1132083
+      value: 0.5960841
+      inSlope: 3.3828187
+      outSlope: 3.3828187
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.3534121
+      outWeight: 0.16517138
+    - serializedVersion: 3
+      time: 0.24808909
+      value: 0.8288105
+      inSlope: 0.034420755
+      outSlope: 0.034420755
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.24919572
+      outWeight: 0.2097715
+    - serializedVersion: 3
+      time: 0.5679473
+      value: 0.31669122
+      inSlope: -1.6285545
+      outSlope: -1.6285545
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.10325523
+    - serializedVersion: 3
+      time: 1
+      value: 0.00386101
+      inSlope: -0.18532325
+      outSlope: -0.18532325
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.14465912
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   frontWheelMotorTorque: 100
   rearWheelMotorTorque: 100
   frontWheelBreakTorque: 200
@@ -982,5 +1033,5 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.3
   m_Enabled: 1
