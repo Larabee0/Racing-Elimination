@@ -19,6 +19,7 @@ public class DriveV2 : MonoBehaviour
     public float rearWheelBreakTorque;
 
     public float HandBreakForce = 1000;
+    public float maxRPM = 1000;
 
     [SerializeField] private Direction DirectionLock = Direction.Stop;
     [SerializeField] private bool Lockout = true;
@@ -30,15 +31,15 @@ public class DriveV2 : MonoBehaviour
     public float FrontBreakTorqueRaw { set { FrontLeft.brakeTorque = FrontRight.brakeTorque = value; } }
     public float RearBreakTorqueRaw { set { RearLeft.brakeTorque = RearRight.brakeTorque = value; } }
 
-    public float FrontMotorTorque { set { FrontMotorTorqueRaw = Mathf.Clamp(value, -1, 1) * frontWheelMotorTorque; } }
-    public float RearMotorTorque { set { RearMotorTorqueRaw = Mathf.Clamp(value, -1, 1) * rearWheelMotorTorque; } }
+    public float FrontMotorTorque { set { FrontMotorTorqueRaw = TorqueCurveRead(Mathf.Clamp(value, -1, 1)) * frontWheelMotorTorque; } }
+    public float RearMotorTorque { set { RearMotorTorqueRaw = TorqueCurveRead(Mathf.Clamp(value, -1, 1)) * rearWheelMotorTorque; } }
     public float FrontBreakTorque { set { FrontBreakTorqueRaw = Mathf.Clamp(value, 0, 1) * frontWheelBreakTorque; } }
     public float RearBreakTorque { set { RearBreakTorqueRaw = Mathf.Clamp(value, 0, 1) * rearWheelBreakTorque; } }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Steer:"+FrontRight.steerAngle+" FR:" + FrontRight.rpm + " FL:" + FrontLeft.rpm + " RR:" + RearRight.rpm + " RL:" + RearLeft.rpm);
+        //Debug.Log("Steer:"+FrontRight.steerAngle+" FR:" + FrontRight.rpm + " FL:" + FrontLeft.rpm + " RR:" + RearRight.rpm + " RL:" + RearLeft.rpm);
         if (((RearLeft.rpm > 0 && RearLeft.rpm < float.Epsilon) || (RearLeft.rpm < 0 && RearLeft.rpm > -float.Epsilon) || RearLeft.rpm == 0) && DirectionLock != Direction.Stop && IsBreaking)
         {
             DirectionLock = Direction.Stop;
@@ -72,26 +73,6 @@ public class DriveV2 : MonoBehaviour
         {
             float input = Input.GetAxis("Vertical") < 0 ? 0 : Input.GetAxis("Vertical");
             FrontMotorTorque = RearMotorTorque = input;
-            //if (RearLeft.rpm > FrontLeft.rpm)
-            //{
-            //    float value = 1 - (FrontLeft.rpm / RearLeft.rpm);
-            //    if(value > 0.5f)
-            //    {
-            //        // break
-            //        RearBreakTorque = value;
-            //        //Debug.Log("TC breaking.");
-            //    }
-            //    else
-            //    {
-            //        // accelerate less
-            //        RearMotorTorque = value;
-            //        //Debug.Log("TC lowered throttle.");
-            //    }
-            //}
-            //if(RearLeft.rpm > FrontLeft.rpm)
-            //{
-            //    Debug.Log("TC Intervening.");
-            //}
             float isBreaking = RearBreakTorque = FrontBreakTorque = Input.GetAxis("Vertical") > 0 ? 0 : -Input.GetAxis("Vertical");
             IsBreaking = isBreaking > 0;
         }
@@ -109,8 +90,11 @@ public class DriveV2 : MonoBehaviour
         }
     }
 
-    private void TorqueCurveRead()
+    private float TorqueCurveRead(float throttlePos)
     {
-        
+        float rpm = FrontLeft.rpm + FrontRight.rpm + RearLeft.rpm + RearRight.rpm / 4;
+        float compValue = torqueCurve.Evaluate(rpm/maxRPM);
+        Debug.Log(compValue);
+        return compValue * throttlePos;
     }
 }
