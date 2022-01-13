@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ArcadeKart : MonoBehaviour
 {
+    public RaceManager.KartTracker tracker;
+
     [Serializable]
     public struct Stats
     {
@@ -168,7 +170,7 @@ public class ArcadeKart : MonoBehaviour
     {
         Rigidbody = GetComponent<Rigidbody>();
         m_Inputs = GetComponents<IInput>();
-
+        Debug.Log(m_Inputs.Length);
         UpdateSuspensionParams(FrontLeftWheel);
         UpdateSuspensionParams(FrontRightWheel);
         UpdateSuspensionParams(RearLeftWheel);

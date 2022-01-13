@@ -35,7 +35,6 @@ public class TrackToCheckPoint : MonoBehaviour
     {
         CheckPoint tracker = Instantiate( trackerPrefab,Pos,Quaternion.identity,transform);
         tracker.transform.forward = forward;
-        tracker.Player = player;
     }
 
 }

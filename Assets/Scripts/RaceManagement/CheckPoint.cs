@@ -2,22 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void KartPassedCheckPoint(KartPassedCheckPointArgs f);
+public struct KartPassedCheckPointArgs
+{
+    public CheckPoint sender;
+    public ArcadeKart kart;
+}
 public class CheckPoint : MonoBehaviour
 {
-    public Transform Player;
+    //public Transform Player;
 
     public Transform left;
     public Transform Top;
     public Transform Bottom;
     public Transform right;
-
-    public BoxCollider collider;
+    [Range(0.1f, 2f)]
+    public float colliderLength = 0.25f;
+    public new BoxCollider collider;
     public bool enableControlPoints;
     public bool StartFinishLine = false;
+    public int index;
+    public KartPassedCheckPoint OnKartPassedCheckPoint;
+
 
     private void Start()
     {
-        Player = GameObject.Find("GoKart3(WheelColliderV2)").transform;
         collider.isTrigger = true;
         SetEnabled(false);
     }
@@ -26,7 +35,12 @@ public class CheckPoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Tracker"))
         {
-            Debug.Log("Player Passed CheckPoint:" + GetInstanceID());
+            //Debug.Log("Kart Passed CheckPoint:" + GetInstanceID());
+            OnKartPassedCheckPoint?.Invoke(new KartPassedCheckPointArgs
+            {
+                sender = this,
+                kart = other.gameObject.GetComponentInParent<ArcadeKart>()
+            });
         }
     }
 
@@ -51,7 +65,7 @@ public class CheckPoint : MonoBehaviour
             float centreX = ((left.localPosition + right.localPosition) / 2).x;
             float centreY = (Bottom.localPosition.y + Top.localPosition.y) / 2;
             collider.center = new Vector3(centreX, centreY, 0f);
-            collider.size = new Vector3(Vector3.Distance(left.localPosition, right.localPosition), Vector3.Distance(Bottom.localPosition, Top.localPosition), 1f);
+            collider.size = new Vector3(Vector3.Distance(left.localPosition, right.localPosition), Vector3.Distance(Bottom.localPosition, Top.localPosition), colliderLength);
 
         }
 
