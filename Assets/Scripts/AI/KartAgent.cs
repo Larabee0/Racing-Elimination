@@ -34,7 +34,16 @@ public class KartAgent : Agent, IInput
         kart.tracker.OnWrongCheckPoint += OnCarWrongCheck;
         kart.tracker.OnRaceComplete += OnRaceEnd;
         kart.tracker.OnRaceStart += OnRaceBegin;
+        kart.tracker.OnLapComplete += OnLapComplete;
         kart.Rigidbody.isKinematic = false;
+    }
+
+    private void OnLapComplete(ArcadeKart agent)
+    {
+        if (agent == kart)
+        {
+            AddReward(1f);
+        }
     }
 
     private void OnRaceBegin(ArcadeKart agent)
@@ -62,10 +71,13 @@ public class KartAgent : Agent, IInput
     {
         if (agent == kart)
         {
-            Debug.Log("Time since last check point: " + timeSinceLastCheckpoint);
             float scoreMul = Mathf.Clamp(1 - Mathf.Clamp01(timeSinceLastCheckpoint), 0.001f, 1);
-            AddReward(2f* scoreMul);
-            AddReward(1f);
+            //AddReward(2f* scoreMul);
+            float delta = Mathf.Abs(lastTimeSinceLastCheckpoint - timeSinceLastCheckpoint);
+            //delta *= 10f;
+            delta = 1f - Mathf.Clamp(delta, 0, 0.8f);
+            //Debug.Log("Reward: " + (0.2f * delta));
+            AddReward(0.2f);
             lastTimeSinceLastCheckpoint = timeSinceLastCheckpoint;
             timeSinceLastCheckpoint = 0f;
         }
@@ -73,9 +85,9 @@ public class KartAgent : Agent, IInput
     public void OnRaceEnd(ArcadeKart agent)
     {
         runTimer = false;
-        Debug.Log("Time since last check point: " + timeSinceLastCheckpoint);
         lastTimeSinceLastCheckpoint = timeSinceLastCheckpoint;
         timeSinceLastCheckpoint = 0f;
+        AddReward(5);
         EndEpisode();
     }
     public override void OnEpisodeBegin()
@@ -91,7 +103,7 @@ public class KartAgent : Agent, IInput
         Vector3 checkPointForwrd = raceManager.checkPoints[kart.tracker.nextCheckPointIndex].transform.forward;
         float directionDot = Vector3.Dot(transform.forward, checkPointForwrd);
         sensor.AddObservation(directionDot);
-        sensor.AddObservation(lastTimeSinceLastCheckpoint);
+        //sensor.AddObservation(lastTimeSinceLastCheckpoint);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -111,7 +123,8 @@ public class KartAgent : Agent, IInput
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            AddReward(-2f);
+            Debug.Log("Bumped wall");
+            AddReward(-3f);
         }
     }
 
@@ -119,7 +132,7 @@ public class KartAgent : Agent, IInput
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            AddReward(-0.25f);
+            AddReward(-0.3f);
         }
         
     }

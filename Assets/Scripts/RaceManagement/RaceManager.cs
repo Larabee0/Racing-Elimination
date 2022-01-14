@@ -22,10 +22,14 @@ public class RaceManager : MonoBehaviour
         {
             checkPoints.Reverse();
         }
-        
+        if (ui == null)
+        {
+            Debug.LogWarning("UI is null! No ui output will be made.");
+        }
+
         int i = 0;
         checkPoints.ForEach(p => { startFinishLine = p.StartFinishLine ? p : startFinishLine; p.OnKartPassedCheckPoint += OnKartPassedCheckPoint; p.index = i; i++; });
-        if(startFinishLine == null)
+        if (startFinishLine == null)
         {
             Debug.LogError("no start finish line.");
             enabled = false;
@@ -33,11 +37,15 @@ public class RaceManager : MonoBehaviour
         indexOfFstartFinishLine = checkPoints.IndexOf(startFinishLine);
         karts = new List<ArcadeKart>(FindObjectsOfType<ArcadeKart>());
         trackers = new Dictionary<ArcadeKart, KartTracker>(karts.Count);
-        karts.ForEach(k => { 
-            trackers.Add(k, new KartTracker(k, Laps, checkPoints.Count,startFinishLine, startFinishLine, startFinishLine)); 
-            trackers[k].OnRaceStart += OnKartStartRace;
-            trackers[k].OnRaceComplete += OnKartFinishRace;
-            trackers[k].OnLapComplete += OnKartCompleteLap;
+        karts.ForEach(k =>
+        {
+            trackers.Add(k, new KartTracker(k, Laps, checkPoints.Count, startFinishLine, startFinishLine, startFinishLine));
+            if (ui != null)
+            {
+                trackers[k].OnRaceStart += OnKartStartRace;
+                trackers[k].OnRaceComplete += OnKartFinishRace;
+                trackers[k].OnLapComplete += OnKartCompleteLap;
+            }
         });
     }
 
@@ -48,10 +56,12 @@ public class RaceManager : MonoBehaviour
             trackers.Remove(kart);
         }
         trackers.Add(kart, new KartTracker(kart, Laps, checkPoints.Count, startFinishLine, startFinishLine, startFinishLine));
-        trackers[kart].OnRaceStart += OnKartStartRace;
-        trackers[kart].OnRaceComplete += OnKartFinishRace;
-        trackers[kart].OnLapComplete += OnKartCompleteLap;
-
+        if (ui != null)
+        {
+            trackers[kart].OnRaceStart += OnKartStartRace;
+            trackers[kart].OnRaceComplete += OnKartFinishRace;
+            trackers[kart].OnLapComplete += OnKartCompleteLap;
+        }
     }
 
     public void OnKartPassedCheckPoint(KartPassedCheckPointArgs f)
@@ -130,7 +140,7 @@ public class RaceManager : MonoBehaviour
         {
             if (checkPoint.index == nextCheckPointIndex)
             {
-                Debug.Log("Correct Point");
+                //Debug.Log("Correct Point");
                 OnCorrectCheckPoint?.Invoke(kart);
                 nextCheckPointIndex = (nextCheckPointIndex + 1) % totalCheckpoints;
 
@@ -148,7 +158,7 @@ public class RaceManager : MonoBehaviour
                             if (currentLap >= laps)
                             {
                                 finishLineCheckPoint = checkPoint;
-                                Debug.Log("Finished Race");
+                                //Debug.Log("Finished Race");
                                 OnRaceComplete?.Invoke(kart);
                                 return;
                             }
@@ -156,7 +166,7 @@ public class RaceManager : MonoBehaviour
                             {
                                 CurrentLapEndPoint = checkPoint;
                                 OnLapComplete?.Invoke(kart);
-                                Debug.Log("Next Lap: " + (currentLap + 1));
+                                //Debug.Log("Next Lap: " + (currentLap + 1));
                             }
                         }
                     }
@@ -168,7 +178,7 @@ public class RaceManager : MonoBehaviour
                     {
                         lastCheckPoint = checkPoint;
                         OnRaceStart?.Invoke(kart);
-                        Debug.Log("started Race");
+                       //Debug.Log("started Race");
                     }
                 }
             }
@@ -186,7 +196,7 @@ public class RaceManager : MonoBehaviour
                 else
                 {
                     OnWrongCheckPoint?.Invoke(kart);
-                    Debug.Log("Incorrect Point");
+                    //Debug.Log("Incorrect Point");
                 }
                 
             }
