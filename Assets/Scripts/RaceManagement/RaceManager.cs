@@ -140,7 +140,7 @@ public class RaceManager : MonoBehaviour
         {
             if (checkPoint.index == nextCheckPointIndex)
             {
-                //Debug.Log("Correct Point");
+                Debug.Log("Correct Point");
                 OnCorrectCheckPoint?.Invoke(kart);
                 nextCheckPointIndex = (nextCheckPointIndex + 1) % totalCheckpoints;
 
@@ -158,7 +158,7 @@ public class RaceManager : MonoBehaviour
                             if (currentLap >= laps)
                             {
                                 finishLineCheckPoint = checkPoint;
-                                //Debug.Log("Finished Race");
+                                Debug.Log("Finished Race");
                                 OnRaceComplete?.Invoke(kart);
                                 return;
                             }
@@ -166,7 +166,7 @@ public class RaceManager : MonoBehaviour
                             {
                                 CurrentLapEndPoint = checkPoint;
                                 OnLapComplete?.Invoke(kart);
-                                //Debug.Log("Next Lap: " + (currentLap + 1));
+                                Debug.Log("Next Lap: " + (currentLap + 1));
                             }
                         }
                     }
@@ -196,7 +196,7 @@ public class RaceManager : MonoBehaviour
                 else
                 {
                     OnWrongCheckPoint?.Invoke(kart);
-                    //Debug.Log("Incorrect Point");
+                    Debug.Log("Incorrect Point");
                 }
                 
             }
