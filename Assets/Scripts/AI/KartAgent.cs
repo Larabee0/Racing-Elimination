@@ -77,7 +77,7 @@ public class KartAgent : Agent, IInput
             //delta *= 10f;
             delta = 1f - Mathf.Clamp(delta, 0, 0.8f);
             //Debug.Log("Reward: " + (0.2f * delta));
-            AddReward(0.2f);
+            AddReward(0.1f);
             lastTimeSinceLastCheckpoint = timeSinceLastCheckpoint;
             timeSinceLastCheckpoint = 0f;
         }
@@ -92,7 +92,7 @@ public class KartAgent : Agent, IInput
     }
     public override void OnEpisodeBegin()
     {
-        transform.position = spawnPosition.position + new Vector3(Random.Range(randomRange.x, randomRange.y), 0, Random.Range(-2f, 2f));
+        transform.position = spawnPosition.position + new Vector3(Random.Range(randomRange.x, randomRange.y), 0, Random.Range(-3f, 3f));
         transform.forward = spawnPosition.forward;
         raceManager.ResetKart(kart);
         Start();
