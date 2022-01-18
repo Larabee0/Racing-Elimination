@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1021714406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1021714407}
+  - component: {fileID: 1021714408}
+  m_Layer: 2
+  m_Name: PlaceTracker
+  m_TagString: Tracker
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1021714407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021714406}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4490468858073598255}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1021714408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021714406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35, y: 0.22, z: 1.8092556}
+  m_Center: {x: 0, y: 0, z: -0.024394035}
 --- !u!1 &1460964413
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,11 +185,11 @@ GameObject:
   - component: {fileID: 4490468858073598255}
   - component: {fileID: 4490468858073598248}
   - component: {fileID: 4490468858073598254}
-  - component: {fileID: 4490468858073598253}
   - component: {fileID: 4490468858073598252}
+  - component: {fileID: 47692863}
   m_Layer: 2
   m_Name: GoKart3(WheelColliderV2)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +212,7 @@ Transform:
   - {fileID: 5838907925097154413}
   - {fileID: 4490468859385771269}
   - {fileID: 1460964414}
+  - {fileID: 1021714407}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -198,6 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b77762a3705045b1fb8824d055680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
   baseStats:
     TopSpeed: 28
     Acceleration: 7
@@ -233,21 +280,6 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
---- !u!114 &4490468858073598253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4490468858073598249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd343db920c4f7e4d822f8a92e849d48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TurnInputName: Horizontal
-  AccelerateButtonName: Accelerate
-  BrakeButtonName: Brake
 --- !u!114 &4490468858073598252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +307,18 @@ MonoBehaviour:
   rearRightWheel:
     wheelTransform: {fileID: 4490468858599197741}
     wheelCollider: {fileID: 4490468859521151222}
+--- !u!114 &47692863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4490468858073598249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3668bddcb2a5ea24b81d1f11856f6af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4490468858332904910
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,14 +994,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4490468859935659530}
-  m_LocalRotation: {x: 0.22066729, y: -0, z: -0, w: 0.9753492}
+  m_LocalRotation: {x: 0.025458517, y: -0, z: -0, w: 0.99967587}
   m_LocalPosition: {x: 0, y: 1.573, z: -3.282}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4490468858073598255}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 25.496, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 2.918, y: 0, z: 0}
 --- !u!20 &4490468859935659528
 Camera:
   m_ObjectHideFlags: 0

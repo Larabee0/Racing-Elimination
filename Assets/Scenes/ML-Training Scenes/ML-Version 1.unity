@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3790,7 +3790,7 @@ GameObject:
   - component: {fileID: 108480846}
   m_Layer: 6
   m_Name: AICKart (4)
-  m_TagString: Untagged
+  m_TagString: Kart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3881,12 +3881,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 3000
   raceManager: {fileID: 1727968768}
-  spawnPosition: {fileID: 425315842}
-  randomRange: {x: -5, y: 5}
   invertCheckpointForward: 1
-  rewardOnCheckpoint: 1
-  timeSinceLastCheckpoint: 0
-  lastTimeSinceLastCheckpoint: 0
 --- !u!114 &108480851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3909,7 +3904,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: e09ec14f33f5a0948883ec97944a6a9a, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -3956,6 +3951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b77762a3705045b1fb8824d055680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
   baseStats:
     TopSpeed: 28
     Acceleration: 7
@@ -4015,7 +4011,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108480845}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.49, y: 0.541, z: -3.66}
+  m_LocalPosition: {x: 76.76, y: 0.541, z: -12.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7009,7 +7005,7 @@ GameObject:
   - component: {fileID: 206483146}
   m_Layer: 6
   m_Name: AICKart (6)
-  m_TagString: Untagged
+  m_TagString: Kart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7100,12 +7096,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 3000
   raceManager: {fileID: 1727968768}
-  spawnPosition: {fileID: 425315842}
-  randomRange: {x: -5, y: 5}
   invertCheckpointForward: 1
-  rewardOnCheckpoint: 1
-  timeSinceLastCheckpoint: 0
-  lastTimeSinceLastCheckpoint: 0
 --- !u!114 &206483151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7128,7 +7119,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: e09ec14f33f5a0948883ec97944a6a9a, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -7175,6 +7166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b77762a3705045b1fb8824d055680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
   baseStats:
     TopSpeed: 28
     Acceleration: 7
@@ -7234,7 +7226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206483145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.49, y: 0.541, z: -3.66}
+  m_LocalPosition: {x: 77.19, y: 0.541, z: -17.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8797,7 +8789,7 @@ GameObject:
   - component: {fileID: 261702962}
   m_Layer: 6
   m_Name: AICKart (5)
-  m_TagString: Untagged
+  m_TagString: Kart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8888,12 +8880,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 3000
   raceManager: {fileID: 1727968768}
-  spawnPosition: {fileID: 425315842}
-  randomRange: {x: -5, y: 5}
   invertCheckpointForward: 1
-  rewardOnCheckpoint: 1
-  timeSinceLastCheckpoint: 0
-  lastTimeSinceLastCheckpoint: 0
 --- !u!114 &261702967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8916,7 +8903,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: e09ec14f33f5a0948883ec97944a6a9a, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -8963,6 +8950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b77762a3705045b1fb8824d055680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
   baseStats:
     TopSpeed: 28
     Acceleration: 7
@@ -9022,7 +9010,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261702961}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.49, y: 0.541, z: -3.66}
+  m_LocalPosition: {x: 74.82, y: 0.541, z: -15.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14457,7 +14445,7 @@ GameObject:
   - component: {fileID: 479175439}
   m_Layer: 6
   m_Name: AICKart (9)
-  m_TagString: Untagged
+  m_TagString: Kart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14548,12 +14536,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 3000
   raceManager: {fileID: 1727968768}
-  spawnPosition: {fileID: 425315842}
-  randomRange: {x: -5, y: 5}
   invertCheckpointForward: 1
-  rewardOnCheckpoint: 1
-  timeSinceLastCheckpoint: 0
-  lastTimeSinceLastCheckpoint: 0
 --- !u!114 &479175444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14576,7 +14559,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: e09ec14f33f5a0948883ec97944a6a9a, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -14623,6 +14606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b77762a3705045b1fb8824d055680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
   baseStats:
     TopSpeed: 28
     Acceleration: 7
@@ -14682,7 +14666,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479175438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.49, y: 0.541, z: -3.66}
+  m_LocalPosition: {x: 74.85, y: 0.541, z: -24.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20058,7 +20042,7 @@ GameObject:
   - component: {fileID: 646878674}
   m_Layer: 6
   m_Name: AICKart (1)
-  m_TagString: Untagged
+  m_TagString: Kart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20149,12 +20133,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 3000
   raceManager: {fileID: 1727968768}
-  spawnPosition: {fileID: 425315842}
-  randomRange: {x: -5, y: 5}
   invertCheckpointForward: 1
-  rewardOnCheckpoint: 1
-  timeSinceLastCheckpoint: 0
-  lastTimeSinceLastCheckpoint: 0
 --- !u!114 &646878679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20177,7 +20156,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: e09ec14f33f5a0948883ec97944a6a9a, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -20224,6 +20203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b77762a3705045b1fb8824d055680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
   baseStats:
     TopSpeed: 28
     Acceleration: 7
@@ -20283,7 +20263,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646878673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.49, y: 0.541, z: -3.66}
+  m_LocalPosition: {x: 74.65, y: 0.541, z: -5.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26696,7 +26676,7 @@ GameObject:
   - component: {fileID: 878469713}
   m_Layer: 6
   m_Name: AICKart (3)
-  m_TagString: Untagged
+  m_TagString: Kart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26787,12 +26767,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 3000
   raceManager: {fileID: 1727968768}
-  spawnPosition: {fileID: 425315842}
-  randomRange: {x: -5, y: 5}
   invertCheckpointForward: 1
-  rewardOnCheckpoint: 1
-  timeSinceLastCheckpoint: 0
-  lastTimeSinceLastCheckpoint: 0
 --- !u!114 &878469718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26815,7 +26790,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: e09ec14f33f5a0948883ec97944a6a9a, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -26862,6 +26837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b77762a3705045b1fb8824d055680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
   baseStats:
     TopSpeed: 28
     Acceleration: 7
@@ -26921,7 +26897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878469712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.49, y: 0.541, z: -3.66}
+  m_LocalPosition: {x: 74.7, y: 0.541, z: -10.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38692,7 +38668,7 @@ GameObject:
   - component: {fileID: 1333943994}
   m_Layer: 6
   m_Name: AICKart
-  m_TagString: Untagged
+  m_TagString: Kart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38728,12 +38704,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 3000
   raceManager: {fileID: 1727968768}
-  spawnPosition: {fileID: 425315842}
-  randomRange: {x: -5, y: 5}
   invertCheckpointForward: 1
-  rewardOnCheckpoint: 1
-  timeSinceLastCheckpoint: 0
-  lastTimeSinceLastCheckpoint: 0
 --- !u!114 &1333943987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38756,7 +38727,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: e09ec14f33f5a0948883ec97944a6a9a, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -38803,6 +38774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b77762a3705045b1fb8824d055680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
   baseStats:
     TopSpeed: 28
     Acceleration: 7
@@ -38862,7 +38834,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333943984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.5, y: 0.541, z: -3.66}
+  m_LocalPosition: {x: 76.66, y: 0.541, z: -3.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43390,7 +43362,7 @@ GameObject:
   - component: {fileID: 1486331849}
   m_Layer: 6
   m_Name: AICKart (7)
-  m_TagString: Untagged
+  m_TagString: Kart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43481,12 +43453,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 3000
   raceManager: {fileID: 1727968768}
-  spawnPosition: {fileID: 425315842}
-  randomRange: {x: -5, y: 5}
   invertCheckpointForward: 1
-  rewardOnCheckpoint: 1
-  timeSinceLastCheckpoint: 0
-  lastTimeSinceLastCheckpoint: 0
 --- !u!114 &1486331854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43509,7 +43476,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: e09ec14f33f5a0948883ec97944a6a9a, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -43556,6 +43523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b77762a3705045b1fb8824d055680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
   baseStats:
     TopSpeed: 28
     Acceleration: 7
@@ -43615,7 +43583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486331848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.49, y: 0.541, z: -3.66}
+  m_LocalPosition: {x: 74.92, y: 0.541, z: -19.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48254,7 +48222,7 @@ GameObject:
   - component: {fileID: 1680032056}
   m_Layer: 6
   m_Name: AICKart (8)
-  m_TagString: Untagged
+  m_TagString: Kart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48345,12 +48313,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 3000
   raceManager: {fileID: 1727968768}
-  spawnPosition: {fileID: 425315842}
-  randomRange: {x: -5, y: 5}
   invertCheckpointForward: 1
-  rewardOnCheckpoint: 1
-  timeSinceLastCheckpoint: 0
-  lastTimeSinceLastCheckpoint: 0
 --- !u!114 &1680032061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48373,7 +48336,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: e09ec14f33f5a0948883ec97944a6a9a, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -48420,6 +48383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b77762a3705045b1fb8824d055680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
   baseStats:
     TopSpeed: 28
     Acceleration: 7
@@ -48479,7 +48443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680032055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.49, y: 0.541, z: -3.66}
+  m_LocalPosition: {x: 76.83, y: 0.541, z: -22.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50184,6 +50148,9 @@ MonoBehaviour:
   Laps: 3
   reverseCheckPoints: 0
   ui: {fileID: 46897372}
+  firstPlacelapNumber: 0
+  firstPlaceKart: {fileID: 0}
+  firstPlaceLastCheckPoint: {fileID: 0}
 --- !u!1 &1730586783
 GameObject:
   m_ObjectHideFlags: 0
@@ -55748,7 +55715,7 @@ GameObject:
   - component: {fileID: 1950018234}
   m_Layer: 6
   m_Name: AICKart (2)
-  m_TagString: Untagged
+  m_TagString: Kart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55839,12 +55806,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 3000
   raceManager: {fileID: 1727968768}
-  spawnPosition: {fileID: 425315842}
-  randomRange: {x: -5, y: 5}
   invertCheckpointForward: 1
-  rewardOnCheckpoint: 1
-  timeSinceLastCheckpoint: 0
-  lastTimeSinceLastCheckpoint: 0
 --- !u!114 &1950018239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55867,7 +55829,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: e09ec14f33f5a0948883ec97944a6a9a, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -55914,6 +55876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b77762a3705045b1fb8824d055680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
   baseStats:
     TopSpeed: 28
     Acceleration: 7
@@ -55973,7 +55936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950018233}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.49, y: 0.541, z: -3.66}
+  m_LocalPosition: {x: 76.87, y: 0.541, z: -7.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -60275,6 +60238,9 @@ MonoBehaviour:
   Laps: 3
   reverseCheckPoints: 0
   ui: {fileID: 46897372}
+  firstPlacelapNumber: 0
+  firstPlaceKart: {fileID: 0}
+  firstPlaceLastCheckPoint: {fileID: 0}
 --- !u!1 &8878267540173014159
 GameObject:
   m_ObjectHideFlags: 0

@@ -123,23 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &47692857 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4490468858073598249, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
-  m_PrefabInstance: {fileID: 4490468859240921979}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &47692863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 47692857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3668bddcb2a5ea24b81d1f11856f6af0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &73393107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,10 +1316,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoKart3(WheelColliderV2)
       objectReference: {fileID: 0}
-    - target: {fileID: 4490468858073598249, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4490468858073598255, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1381,20 +1360,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4490468859935659535, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99967587
-      objectReference: {fileID: 0}
-    - target: {fileID: 4490468859935659535, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.025458517
-      objectReference: {fileID: 0}
-    - target: {fileID: 4490468859935659535, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 2.918
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4490468858073598253, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
 --- !u!1001 &7033299139188431762
 PrefabInstance:

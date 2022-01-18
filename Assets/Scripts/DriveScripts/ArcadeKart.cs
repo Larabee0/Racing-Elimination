@@ -5,6 +5,7 @@ using UnityEngine;
 public class ArcadeKart : MonoBehaviour
 {
     public RaceManager.KartTracker tracker;
+    public int position;
 
     [Serializable]
     public struct Stats
