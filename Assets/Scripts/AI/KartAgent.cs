@@ -8,8 +8,20 @@ using Unity.MLAgents.Actuators;
 public class KartAgent : Agent, IInput
 {
     public RaceManager raceManager;
-    public Transform spawnPosition;
-    public Vector2 randomRange;
+    private Vector3 spawnPosition;
+    private Quaternion spawnRot;
+    public bool invertCheckpointForward = false;
+    private Vector3 NextChockPointFoward
+    {
+        get
+        {
+            return invertCheckpointForward switch
+            {
+                true => -raceManager.checkPoints[kart.tracker.nextCheckPointIndex].transform.forward,
+                false => raceManager.checkPoints[kart.tracker.nextCheckPointIndex].transform.forward
+            };
+        }
+    }
     ArcadeKart kart;
     float _acceleration;
     public float Acceleration => _acceleration;
@@ -25,6 +37,8 @@ public class KartAgent : Agent, IInput
     private void Awake()
     {
         kart = GetComponent<ArcadeKart>();
+        spawnPosition = transform.position;
+        spawnRot = transform.rotation;
     }
 
     private void Start()
@@ -42,7 +56,7 @@ public class KartAgent : Agent, IInput
     {
         if (agent == kart)
         {
-            AddReward(1f);
+            AddReward(3f);
         }
     }
 
@@ -53,6 +67,7 @@ public class KartAgent : Agent, IInput
     }
     private void Update()
     {
+        Debug.DrawRay(raceManager.checkPoints[kart.tracker.nextCheckPointIndex].transform.position, NextChockPointFoward);
         if (runTimer)
         {
             timeSinceLastCheckpoint += Time.deltaTime;
@@ -63,7 +78,8 @@ public class KartAgent : Agent, IInput
     {
         if(agent == kart)
         {
-            AddReward(-4f);
+            Debug.Log("Incorrect Point");
+            AddReward(-1f);
         }
     }
 
@@ -77,7 +93,7 @@ public class KartAgent : Agent, IInput
             //delta *= 10f;
             delta = 1f - Mathf.Clamp(delta, 0, 0.8f);
             //Debug.Log("Reward: " + (0.2f * delta));
-            AddReward(0.1f);
+            AddReward(0.75f);
             lastTimeSinceLastCheckpoint = timeSinceLastCheckpoint;
             timeSinceLastCheckpoint = 0f;
         }
@@ -87,36 +103,80 @@ public class KartAgent : Agent, IInput
         runTimer = false;
         lastTimeSinceLastCheckpoint = timeSinceLastCheckpoint;
         timeSinceLastCheckpoint = 0f;
-        AddReward(5);
+        AddReward(5f);
         EndEpisode();
     }
     public override void OnEpisodeBegin()
     {
-        transform.position = spawnPosition.position + new Vector3(Random.Range(randomRange.x, randomRange.y), 0, Random.Range(-3f, 3f));
-        transform.forward = spawnPosition.forward;
         raceManager.ResetKart(kart);
+        transform.position = spawnPosition;
+        transform.rotation = spawnRot;
         Start();
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        Vector3 checkPointForwrd = raceManager.checkPoints[kart.tracker.nextCheckPointIndex].transform.forward;
-        float directionDot = Vector3.Dot(transform.forward, checkPointForwrd);
+        float directionDot = Vector3.Dot(transform.forward, NextChockPointFoward);
         sensor.AddObservation(directionDot);
-        //sensor.AddObservation(lastTimeSinceLastCheckpoint);
+        sensor.AddObservation(kart.LocalSpeed());
+        AddReward(kart.LocalSpeed() * .001f);
     }
-
     public override void OnActionReceived(ActionBuffers actions)
     {
-        _steering = actions.ContinuousActions[1];
-        _acceleration = actions.ContinuousActions[0];
+        ActionSegment<int> discreteActions = actions.DiscreteActions;
+        switch (discreteActions[0])
+        {
+            case 0:
+                _steering = -1f;
+                break;
+            case 1:
+                _steering = 0f;
+                break;
+            case 2:
+                _steering = 1f;
+                break;
+        }
+        switch (discreteActions[1])
+        {
+            case 0:
+                _acceleration = -1f;
+                break;
+            case 1:
+                _acceleration = 0f;
+                break;
+            case 2:
+                _acceleration = 1f;
+                break;
+        }
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        ActionSegment<float> continousActions = actionsOut.ContinuousActions;
-        continousActions[0] = Input.GetAxis("Vertical");
-        continousActions[1] = Input.GetAxis("Horizontal");
+        ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
+        switch (Input.GetAxis("Horizontal"))
+        {
+            case 0:
+                discreteActions[0] = 1;
+                break;
+                case >0:
+                discreteActions[0] = 2;
+                break;
+                case <0:
+                discreteActions[0] = 0;
+                break;
+        }
+        switch (Input.GetAxis("Vertical"))
+        {
+            case 0:
+                discreteActions[1] = 1;
+                break;
+            case >0:
+                discreteActions[1] = 2;
+                break;
+            case <0:
+                discreteActions[1] = 0;
+                break;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -124,7 +184,12 @@ public class KartAgent : Agent, IInput
         if (collision.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Bumped wall");
-            AddReward(-3f);
+            AddReward(-0.5f);
+        }
+        if (collision.gameObject.CompareTag("Kart"))
+        {
+            Debug.Log("Bumped Kart");
+            AddReward(-0.4f);
         }
     }
 
@@ -132,9 +197,12 @@ public class KartAgent : Agent, IInput
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            AddReward(-0.3f);
+            AddReward(-0.1f);
         }
-        
+        if (collision.gameObject.CompareTag("Kart"))
+        {
+            AddReward(-0.1f);
+        }
     }
 
     public InputData GenerateInput()

@@ -3883,6 +3883,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   spawnPosition: {fileID: 425315842}
   randomRange: {x: -5, y: 5}
+  invertCheckpointForward: 1
   rewardOnCheckpoint: 1
   timeSinceLastCheckpoint: 0
   lastTimeSinceLastCheckpoint: 0
@@ -3899,16 +3900,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 2
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 
-    VectorActionSize: 02000000
+      m_NumContinuousActions: 0
+      BranchSizes: 0300000003000000
+    VectorActionSize: 0300000003000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
+    VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 42404073be7df844f9b50495041d6963, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -7101,6 +7102,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   spawnPosition: {fileID: 425315842}
   randomRange: {x: -5, y: 5}
+  invertCheckpointForward: 1
   rewardOnCheckpoint: 1
   timeSinceLastCheckpoint: 0
   lastTimeSinceLastCheckpoint: 0
@@ -7117,16 +7119,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 2
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 
-    VectorActionSize: 02000000
+      m_NumContinuousActions: 0
+      BranchSizes: 0300000003000000
+    VectorActionSize: 0300000003000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
+    VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 42404073be7df844f9b50495041d6963, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -8888,6 +8890,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   spawnPosition: {fileID: 425315842}
   randomRange: {x: -5, y: 5}
+  invertCheckpointForward: 1
   rewardOnCheckpoint: 1
   timeSinceLastCheckpoint: 0
   lastTimeSinceLastCheckpoint: 0
@@ -8904,16 +8907,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 2
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 
-    VectorActionSize: 02000000
+      m_NumContinuousActions: 0
+      BranchSizes: 0300000003000000
+    VectorActionSize: 0300000003000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
+    VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 42404073be7df844f9b50495041d6963, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -12995,7 +12998,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425315839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 76.1, y: 0.52, z: -4.9}
+  m_LocalPosition: {x: 76.25, y: 0.52, z: -4.9}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14547,6 +14550,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   spawnPosition: {fileID: 425315842}
   randomRange: {x: -5, y: 5}
+  invertCheckpointForward: 1
   rewardOnCheckpoint: 1
   timeSinceLastCheckpoint: 0
   lastTimeSinceLastCheckpoint: 0
@@ -14563,16 +14567,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 2
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 
-    VectorActionSize: 02000000
+      m_NumContinuousActions: 0
+      BranchSizes: 0300000003000000
+    VectorActionSize: 0300000003000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
+    VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 42404073be7df844f9b50495041d6963, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -16543,8 +16547,8 @@ MonoBehaviour:
     showTransformTool: 1
     showPathBounds: 0
     showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
+    displayAnchorPoints: 0
+    displayControlPoints: 0
     bezierHandleScale: 1
     globalDisplaySettingsFoldout: 1
     keepConstantHandleSize: 1
@@ -20147,6 +20151,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   spawnPosition: {fileID: 425315842}
   randomRange: {x: -5, y: 5}
+  invertCheckpointForward: 1
   rewardOnCheckpoint: 1
   timeSinceLastCheckpoint: 0
   lastTimeSinceLastCheckpoint: 0
@@ -20163,16 +20168,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 2
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 
-    VectorActionSize: 02000000
+      m_NumContinuousActions: 0
+      BranchSizes: 0300000003000000
+    VectorActionSize: 0300000003000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
+    VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 42404073be7df844f9b50495041d6963, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -26784,6 +26789,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   spawnPosition: {fileID: 425315842}
   randomRange: {x: -5, y: 5}
+  invertCheckpointForward: 1
   rewardOnCheckpoint: 1
   timeSinceLastCheckpoint: 0
   lastTimeSinceLastCheckpoint: 0
@@ -26800,16 +26806,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 2
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 
-    VectorActionSize: 02000000
+      m_NumContinuousActions: 0
+      BranchSizes: 0300000003000000
+    VectorActionSize: 0300000003000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
+    VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 42404073be7df844f9b50495041d6963, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -38724,6 +38730,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   spawnPosition: {fileID: 425315842}
   randomRange: {x: -5, y: 5}
+  invertCheckpointForward: 1
   rewardOnCheckpoint: 1
   timeSinceLastCheckpoint: 0
   lastTimeSinceLastCheckpoint: 0
@@ -38740,16 +38747,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 2
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 
-    VectorActionSize: 02000000
+      m_NumContinuousActions: 0
+      BranchSizes: 0300000003000000
+    VectorActionSize: 0300000003000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
+    VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 42404073be7df844f9b50495041d6963, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -38855,7 +38862,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333943984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 73.9, y: 0.541, z: -3.66}
+  m_LocalPosition: {x: 22.5, y: 0.541, z: -3.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43476,6 +43483,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   spawnPosition: {fileID: 425315842}
   randomRange: {x: -5, y: 5}
+  invertCheckpointForward: 1
   rewardOnCheckpoint: 1
   timeSinceLastCheckpoint: 0
   lastTimeSinceLastCheckpoint: 0
@@ -43492,16 +43500,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 2
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 
-    VectorActionSize: 02000000
+      m_NumContinuousActions: 0
+      BranchSizes: 0300000003000000
+    VectorActionSize: 0300000003000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
+    VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 42404073be7df844f9b50495041d6963, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -48339,6 +48347,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   spawnPosition: {fileID: 425315842}
   randomRange: {x: -5, y: 5}
+  invertCheckpointForward: 1
   rewardOnCheckpoint: 1
   timeSinceLastCheckpoint: 0
   lastTimeSinceLastCheckpoint: 0
@@ -48355,16 +48364,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 2
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 
-    VectorActionSize: 02000000
+      m_NumContinuousActions: 0
+      BranchSizes: 0300000003000000
+    VectorActionSize: 0300000003000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
+    VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 42404073be7df844f9b50495041d6963, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -55832,6 +55841,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   spawnPosition: {fileID: 425315842}
   randomRange: {x: -5, y: 5}
+  invertCheckpointForward: 1
   rewardOnCheckpoint: 1
   timeSinceLastCheckpoint: 0
   lastTimeSinceLastCheckpoint: 0
@@ -55848,16 +55858,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 2
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 2
-      BranchSizes: 
-    VectorActionSize: 02000000
+      m_NumContinuousActions: 0
+      BranchSizes: 0300000003000000
+    VectorActionSize: 0300000003000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
+    VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 42404073be7df844f9b50495041d6963, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: c434389e29f3a86419cd7e3988d9bdfd, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent

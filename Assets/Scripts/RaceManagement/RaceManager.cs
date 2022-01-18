@@ -195,10 +195,12 @@ public class RaceManager : MonoBehaviour
                 }
                 else
                 {
-                    OnWrongCheckPoint?.Invoke(kart);
-                    Debug.Log("Incorrect Point");
                 }
-                
+                if (HasStartedRace)
+                {
+                    Debug.Log("Incorrect Point");
+                    OnWrongCheckPoint?.Invoke(kart);
+                }
             }
         }
 
