@@ -8,6 +8,9 @@ public class KartAgent : Agent, IInput
     public RaceManager raceManager;
     public bool invertCheckpointForward = false;
 
+    private float baseSpeed;
+    public Vector2 speedRange = Vector2.zero;
+
     private ArcadeKart kart;
     private Vector3 NextChockPointFoward
     {
@@ -34,8 +37,12 @@ public class KartAgent : Agent, IInput
     private void Awake()
     {
         kart = GetComponent<ArcadeKart>();
+        baseSpeed = kart.baseStats.TopSpeed;
+        speedRange.x = Mathf.Clamp(speedRange.x, 0.5f, 0.99f);
+        speedRange.y = Mathf.Clamp(speedRange.y, 0f, 0.5f);
         spawnPosition = transform.position;
         spawnRot = transform.rotation;
+        InvokeRepeating(nameof(KartStatMod), Random.Range(2.5f, 5f), Random.Range(5f, 7.5f));
     }
 
     private void Start()
@@ -46,6 +53,7 @@ public class KartAgent : Agent, IInput
         kart.tracker.OnCircuitComplete += OnRaceEnd;
         kart.tracker.OnCircuitStart += OnRaceBegin;
         kart.tracker.OnLapComplete += OnLapComplete;
+        kart.tracker.OnPlaceChanged += OnPlaceChanged;
         kart.Rigidbody.isKinematic = false;
     }
 
@@ -126,6 +134,11 @@ public class KartAgent : Agent, IInput
     }
     #endregion
 
+    public void OnPlaceChanged(ArcadeKart kart, int oldPlace, int newPlace)
+    {
+        placeCurrent = newPlace;
+    }
+
     #endregion
 
     public override void OnEpisodeBegin()
@@ -135,12 +148,29 @@ public class KartAgent : Agent, IInput
         Start();
     }
 
+    int placeLastObs;
+    int placeCurrent;
+
     public override void CollectObservations(VectorSensor sensor)
     {
         float directionDot = Vector3.Dot(transform.forward, NextChockPointFoward);
         sensor.AddObservation(directionDot);
         sensor.AddObservation(kart.LocalSpeed());
         AddReward(kart.LocalSpeed() * .001f);
+        sensor.AddObservation(placeCurrent);
+        if(placeLastObs == placeCurrent)
+        {
+            AddReward(0.1f);
+        }
+        else if(placeLastObs < placeCurrent)
+        {
+            AddReward(-0.5f);
+        }
+        else
+        {
+            AddReward(0.5f);
+        }
+        placeLastObs = placeCurrent;
     }
     #endregion
 
@@ -218,4 +248,17 @@ public class KartAgent : Agent, IInput
     #endregion
 
     #endregion
+
+    private void KartStatMod()
+    {
+        ArcadeKart.Stats stats = kart.baseStats;
+        bool ModSpeedToNoNet = Random.Range(1, 4) % 2 == 0;
+        stats.TopSpeed = ModSpeedToNoNet switch
+        {
+            true => baseSpeed * (Random.Range(0,2) == 1? 1f + speedRange.y: speedRange.x),
+            false => baseSpeed
+        };
+        //Debug.Log(kart.name+" "+baseSpeed + "|" + stats.TopSpeed);
+        kart.baseStats = stats;
+    }
 }

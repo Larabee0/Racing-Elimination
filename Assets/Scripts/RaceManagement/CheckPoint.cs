@@ -12,6 +12,10 @@ public class CheckPoint : MonoBehaviour
 {
     //public Transform Player;
 
+    public Vector3 LeftPos { get { return left.transform.position; } }
+    public Vector3 RightPos { get { return left.transform.position; } }
+    public Vector3 CentrePos { get { return transform.position; } }
+
     public Transform left;
     public Transform Top;
     public Transform Bottom;
@@ -23,6 +27,7 @@ public class CheckPoint : MonoBehaviour
     public bool StartFinishLine = false;
     public int index;
     public KartPassedCheckPoint OnKartPassedCheckPoint;
+    public KartPassedCheckPoint OnKartEnterCheckPoint;
 
 
     private void Start()
@@ -37,6 +42,19 @@ public class CheckPoint : MonoBehaviour
         {
             //Debug.Log("Kart Passed CheckPoint:" + GetInstanceID());
             OnKartPassedCheckPoint?.Invoke(new KartPassedCheckPointArgs
+            {
+                sender = this,
+                kart = other.gameObject.GetComponentInParent<ArcadeKart>()
+            });
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Tracker"))
+        {
+            //Debug.Log("Kart Passed CheckPoint:" + GetInstanceID());
+            OnKartEnterCheckPoint?.Invoke(new KartPassedCheckPointArgs
             {
                 sender = this,
                 kart = other.gameObject.GetComponentInParent<ArcadeKart>()

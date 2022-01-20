@@ -8,6 +8,7 @@ public class TimerLapCounter : MonoBehaviour
 {
     public Text lapCounter;
     public Text timer;
+    public Text place;
     public GameObject FinishedText;
 
     private int maxLaps;
@@ -15,6 +16,8 @@ public class TimerLapCounter : MonoBehaviour
 
     public int MaxLaps { set { maxLaps = value; SetLapCounter(); } }
     public int CurrentLap { set { currentLap = value; SetLapCounter(); } }
+
+    public int Place { set { place.text = "Place: " + value.ToString(); } }
 
     float timerLap = 0;
     float timerTotal = 0;

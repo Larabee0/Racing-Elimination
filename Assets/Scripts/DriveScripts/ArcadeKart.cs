@@ -5,7 +5,8 @@ using UnityEngine;
 public class ArcadeKart : MonoBehaviour
 {
     public RaceManager.KartTracker tracker;
-    public int position;
+    public int place;
+    public float kartSpeedMul = 1f;
 
     [Serializable]
     public struct Stats
@@ -155,7 +156,7 @@ public class ArcadeKart : MonoBehaviour
     bool m_InAir = false;
 
     public void SetCanMove(bool move) => m_CanMove = move;
-    public float GetMaxSpeed() => Mathf.Max(m_FinalStats.TopSpeed, m_FinalStats.ReverseSpeed);
+    public float GetMaxSpeed() => Mathf.Max(m_FinalStats.TopSpeed * kartSpeedMul, m_FinalStats.ReverseSpeed);
 
     void UpdateSuspensionParams(WheelCollider wheel)
     {
@@ -176,7 +177,7 @@ public class ArcadeKart : MonoBehaviour
         UpdateSuspensionParams(FrontRightWheel);
         UpdateSuspensionParams(RearLeftWheel);
         UpdateSuspensionParams(RearRightWheel);
-
+        kartSpeedMul = kartSpeedMul == 0 ? 1f : kartSpeedMul;
         m_CurrentGrip = baseStats.Grip;
     }
 
@@ -269,7 +270,7 @@ public class ArcadeKart : MonoBehaviour
             if (Mathf.Abs(dot) > 0.1f)
             {
                 float speed = Rigidbody.velocity.magnitude;
-                return dot < 0 ? -(speed / m_FinalStats.ReverseSpeed) : (speed / m_FinalStats.TopSpeed);
+                return dot < 0 ? -(speed / m_FinalStats.ReverseSpeed) : (speed / (m_FinalStats.TopSpeed* kartSpeedMul));
             }
             return 0f;
         }
@@ -308,7 +309,7 @@ public class ArcadeKart : MonoBehaviour
         bool localVelDirectionIsFwd = localVel.z >= 0;
 
         // use the max speed for the direction we are going--forward or reverse.
-        float maxSpeed = localVelDirectionIsFwd ? m_FinalStats.TopSpeed : m_FinalStats.ReverseSpeed;
+        float maxSpeed = localVelDirectionIsFwd ? (m_FinalStats.TopSpeed* kartSpeedMul) : m_FinalStats.ReverseSpeed;
         float accelPower = accelDirectionIsFwd ? m_FinalStats.Acceleration : m_FinalStats.ReverseAcceleration;
 
         float currentSpeed = Rigidbody.velocity.magnitude;
