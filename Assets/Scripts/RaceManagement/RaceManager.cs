@@ -264,14 +264,14 @@ public class RaceManager : MonoBehaviour
 
     public void OnKartPlaceChanged(ArcadeKart kart, int oldPlace, int newPlace)
     {
-        if(oldPlace > newPlace)
-        {
-            Debug.Log(kart.name + " moved up to " + newPlace + " place from " + oldPlace + " place.");
-        }
-        else
-        {
-            Debug.Log(kart.name + " moved down to " + newPlace + " place from " + oldPlace + " place.");
-        }
+        //if(oldPlace > newPlace)
+        //{
+        //    Debug.Log(kart.name + " moved up to " + newPlace + " place from " + oldPlace + " place.");
+        //}
+        //else
+        //{
+        //    Debug.Log(kart.name + " moved down to " + newPlace + " place from " + oldPlace + " place.");
+        //}
         if(kart.name == "Red")
         {
             ui.Place = newPlace;

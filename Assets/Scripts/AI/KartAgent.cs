@@ -77,7 +77,7 @@ public class KartAgent : Agent, IInput
         if (collision.transform.CompareTag("Kart"))
         {
             Debug.Log("Bumped Kart");
-            AddReward(-0.4f);
+            AddReward(-0.5f);
         }
     }
 
@@ -116,10 +116,12 @@ public class KartAgent : Agent, IInput
     #endregion
 
     #region CheckPoints
+    private int wrongCheckPoints = 0;
     public void OnCarCorrectCheck(ArcadeKart agent)
     {
         if (agent == kart)
         {
+            wrongCheckPoints = 0;
             AddReward(0.75f);
         }
     }
@@ -128,8 +130,13 @@ public class KartAgent : Agent, IInput
     {
         if (agent == kart)
         {
+            wrongCheckPoints += 1;
             Debug.Log("Incorrect Point");
             AddReward(-1f);
+            if(wrongCheckPoints > 5)
+            {
+                EndEpisode();
+            }
         }
     }
     #endregion
@@ -157,19 +164,6 @@ public class KartAgent : Agent, IInput
         sensor.AddObservation(directionDot);
         sensor.AddObservation(kart.LocalSpeed());
         AddReward(kart.LocalSpeed() * .001f);
-        sensor.AddObservation(placeCurrent);
-        if(placeLastObs == placeCurrent)
-        {
-            AddReward(0.1f);
-        }
-        else if(placeLastObs < placeCurrent)
-        {
-            AddReward(-0.5f);
-        }
-        else
-        {
-            AddReward(0.5f);
-        }
         placeLastObs = placeCurrent;
     }
     #endregion
