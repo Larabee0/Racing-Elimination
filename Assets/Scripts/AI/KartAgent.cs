@@ -72,7 +72,7 @@ public class KartAgent : Agent, IInput
         if (collision.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Bumped wall");
-            AddReward(-0.5f);
+            AddReward(-0.6f);
         }
         if (collision.transform.CompareTag("Kart"))
         {
@@ -110,8 +110,8 @@ public class KartAgent : Agent, IInput
 
     public void OnRaceEnd(ArcadeKart agent)
     {
-        AddReward(5f);
-        EndEpisode();
+        //AddReward(5f);
+        raceManager.EndAllEpisodes(true);
     }
     #endregion
 
@@ -131,11 +131,16 @@ public class KartAgent : Agent, IInput
         if (agent == kart)
         {
             wrongCheckPoints += 1;
-            Debug.Log("Incorrect Point");
-            AddReward(-1f);
-            if(wrongCheckPoints > 5)
+            //Debug.Log("Incorrect Point");
+            AddReward(-2f);
+            if(wrongCheckPoints > 1)
             {
-                EndEpisode();
+                Debug.LogWarning("Turning AI Around");
+                AddReward(-4f);
+                kart.Rigidbody.isKinematic = true;
+                transform.Rotate(new Vector3(0, 1f, 0), 180f, Space.Self);
+                raceManager.trackers[kart].FixCheckPoint();
+                kart.Rigidbody.isKinematic = false;
             }
         }
     }

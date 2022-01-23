@@ -316,6 +316,21 @@ public class RaceManager : MonoBehaviour
         ui.ResetTimer();
         ui.TotalTime();
     }
+
+    public void EndAllEpisodes(bool endOfRace = false)
+    {
+        for (int i = 0; i < karts.Count; i++)
+        {
+            if (karts[i].TryGetComponent(out KartAgent agent))
+            {
+                if (endOfRace)
+                {
+                    agent.AddReward(karts.Count - karts[i].place);
+                }
+                agent.EndEpisode();
+            }
+        }
+    }
     #endregion
 
     #region Events
@@ -458,7 +473,7 @@ public class RaceManager : MonoBehaviour
                             {
                                 CurrentLapEndPoint = checkPoint;
                                 OnLapComplete?.Invoke(kart);
-                                Debug.Log("Next Lap: " + (currentLap));
+                                //Debug.Log("Next Lap: " + (currentLap));
                             }
                         }
                     }
@@ -491,11 +506,16 @@ public class RaceManager : MonoBehaviour
                 }
                 if (HasStartedRace)
                 {
+                    lastWrongCheckPoint = checkPoint;
                     OnWrongCheckPoint?.Invoke(kart);
                 }
             }
         }
-
+        private CheckPoint lastWrongCheckPoint;
+        public void FixCheckPoint()
+        {
+            nextCheckPointIndex = lastWrongCheckPoint.index;
+        }
         public void NextLap()
         {
             lastCheckPoint = null;

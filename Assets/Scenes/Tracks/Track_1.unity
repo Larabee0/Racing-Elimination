@@ -3507,7 +3507,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 91426ea9b752d7544ab8bad326aadfa2, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: b925890ce3d190a48920df8a8b843e1f, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -3841,7 +3841,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 91426ea9b752d7544ab8bad326aadfa2, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: b925890ce3d190a48920df8a8b843e1f, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -4258,7 +4258,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 91426ea9b752d7544ab8bad326aadfa2, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: b925890ce3d190a48920df8a8b843e1f, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -7684,7 +7684,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 91426ea9b752d7544ab8bad326aadfa2, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: b925890ce3d190a48920df8a8b843e1f, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -21047,7 +21047,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 91426ea9b752d7544ab8bad326aadfa2, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: b925890ce3d190a48920df8a8b843e1f, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -30529,7 +30529,7 @@ PrefabInstance:
     - target: {fileID: 9158994091886803020, guid: f65766aacd62ebf42a8075423849b2ad, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 91426ea9b752d7544ab8bad326aadfa2, type: 3}
+      objectReference: {fileID: 5022602860645237092, guid: b925890ce3d190a48920df8a8b843e1f, type: 3}
     - target: {fileID: 9158994091886803020, guid: f65766aacd62ebf42a8075423849b2ad, type: 3}
       propertyPath: m_BehaviorType
       value: 0
@@ -34801,7 +34801,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 91426ea9b752d7544ab8bad326aadfa2, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: b925890ce3d190a48920df8a8b843e1f, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -37834,7 +37834,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 91426ea9b752d7544ab8bad326aadfa2, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: b925890ce3d190a48920df8a8b843e1f, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -39532,7 +39532,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 91426ea9b752d7544ab8bad326aadfa2, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: b925890ce3d190a48920df8a8b843e1f, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -48020,7 +48020,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 91426ea9b752d7544ab8bad326aadfa2, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: b925890ce3d190a48920df8a8b843e1f, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: KartAgent
@@ -52276,6 +52276,10 @@ PrefabInstance:
       propertyPath: ui
       value: 
       objectReference: {fileID: 1369832816}
+    - target: {fileID: 8878267538528605664, guid: 58f957c781c74eb4b92f30eaee714dcc, type: 3}
+      propertyPath: Laps
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8878267538528605664, guid: 58f957c781c74eb4b92f30eaee714dcc, type: 3}
       propertyPath: reverseCheckPoints
       value: 1
