@@ -8,20 +8,28 @@ public class RaceManager : MonoBehaviour
 {
     public VertexPath path;
     public GameObject checkPointContainer;
-    public List<CheckPoint> checkPoints = new List<CheckPoint>();
+    public List<CheckPoint> checkPoints = new();
     public CheckPoint startFinishLine;
     public int indexOfFstartFinishLine;
     private List<ArcadeKart> karts;
     public Dictionary<ArcadeKart, KartTracker> trackers;
-    [Range(1,50)]
+    [Range(1, 50)]
     public int Laps = 1;
     public bool reverseCheckPoints = false;
     public TimerLapCounter ui;
 
+    public ArcadeKart playerKart = null;
+
+    public List<string> kartPlaceInfo = new();
+    public List<string> kartPlaces = new();
+
+    public KartColourFactory kartColours;
+
     public void Awake()
     {
+        playerKart = null;
         path = checkPointContainer.GetComponent<PathCreator>().path;
-        List< CheckPoint> cPInternal = new List<CheckPoint>(checkPointContainer.GetComponentsInChildren<CheckPoint>());
+        List<CheckPoint> cPInternal = new(checkPointContainer.GetComponentsInChildren<CheckPoint>());
         if (reverseCheckPoints)
         {
             cPInternal.Reverse();
@@ -44,7 +52,7 @@ public class RaceManager : MonoBehaviour
 
         if (startFinishLine == null)
         {
-            Debug.LogError("no start finish line.");
+            Debug.LogError("No start finish line!");
             enabled = false;
         }
         indexOfFstartFinishLine = cPInternal.IndexOf(startFinishLine);
@@ -52,18 +60,26 @@ public class RaceManager : MonoBehaviour
         trackers = new Dictionary<ArcadeKart, KartTracker>(karts.Count);
         karts.ForEach(k =>
         {
-            kartPos.Add(k.transform.position);
-            kartTimes.Add(k.name);
+            if(playerKart == null && k.TryGetComponent(out UniversalInput universalInput))
+            {
+                playerKart = k;
+            }
+            //kartPos.Add(k.transform.position);
+            kartPlaceInfo.Add(k.name);
             kartPlaces.Add(k.name);
             ResetKart(k);
         });
-        startFinishLineTime = path.GetClosestDistanceAlongPath(path.GetClosestPointOnPath(startFinishLine.transform.position)) +2f;
-        Debug.Log("Start finish distance: " + startFinishLineTime);
+        if (playerKart == null) { Debug.LogWarning("No Player Kart"); }
+
+        if (kartColours != null)
+        {
+            kartColours.PaintKarts(karts);
+        }
     }
 
     private void Update()
     {
-        DetermineFirstPlaceV2();
+        DetermineFirstPlace();
     }
 
     public void ResetKart(ArcadeKart kart)
@@ -78,111 +94,22 @@ public class RaceManager : MonoBehaviour
             trackers[kart].OnCircuitStart += OnKartStartCircuit;
             trackers[kart].OnCircuitComplete += OnKartFinishCircuit;
             trackers[kart].OnLapComplete += OnKartCompleteLap;
-            trackers[kart].OnPlaceChanged+=OnKartPlaceChanged;
+            trackers[kart].OnPlaceChanged += OnKartPlaceChanged;
         }
     }
 
-    public int firstPlacelapNumber = 0;
-    public ArcadeKart firstPlaceKart;
-    public CheckPoint firstPlaceLastCheckPoint;
-    public List<string> kartTimes = new List<string>();
-    public List<string> kartPlaces = new List<string>();
-    List<Vector3> kartPos = new List<Vector3>();
-    float startFinishLineTime;
     public void DetermineFirstPlace()
     {
-        List<KartPositionInfo> kartPositions = new List<KartPositionInfo>(karts.Count);
-        for (int i = 0; i < karts.Count; i++)
-        {
-            //kartPos[i] = path.GetClosestPointOnPath(karts[i].transform.position);
-            float timeAbs = path.GetClosestDistanceAlongPath(karts[i].transform.position);
-            float time = timeAbs;
-            if (timeAbs < startFinishLineTime)
-            {
-                time += startFinishLineTime;
-            }
-            else // greater or equal
-            {
-                time -= startFinishLineTime;
-            }
-            kartPositions.Add(new KartPositionInfo(i, trackers[karts[i]].currentLap,  time));
-            //kartTimes[i] = karts[i].gameObject.name +" lap: " + trackers[karts[i]].currentLap + " distance: " + time.ToString();
-            
-        }
-        kartPositions.Sort();
-        kartPositions.Reverse();
-        for (int i = 0; i < kartPositions.Count; i++)
-        {
-            trackers[karts[kartPositions[i].kartIndex]].Place = i + 1;
-            //kartPlaces[i] = karts[kartPositions[i].kartIndex].name;
-
-        }
-    }
-
-    private class KartPositionInfo : IEquatable<KartPositionInfo>, IComparable<KartPositionInfo>
-    {
-        public int kartIndex;
-        public int Lap;
-        public float timeOnPath;
-
-        public KartPositionInfo(int kartIndex, int lap, float time)
-        {
-            this.kartIndex = kartIndex;
-            Lap = lap;
-            this.timeOnPath = time;
-        }
-        public bool Equals(KartPositionInfo other)
-        {
-            return other.kartIndex == this.kartIndex;
-        }
-
-        public int CompareTo(KartPositionInfo other)
-        {
-            if (other == null)
-            {
-                return 1;
-            }
-            else
-            {
-                if(Lap > other.Lap)
-                {
-                    return 1;
-                }
-                else if(Lap < other.Lap)
-                {
-                    return -1;
-                }
-                else
-                {
-                    if (timeOnPath > other.timeOnPath)
-                    {
-                        return 1;
-                    }
-                    else if (timeOnPath < other.timeOnPath)
-                    {
-                        return -1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
-    }
-
-    public void DetermineFirstPlaceV2()
-    {
-        List<KartPositionInfoV2> kartPositions = new List<KartPositionInfoV2>(karts.Count);
+        List<KartPositionInfo> kartPositions = new(karts.Count);
         for (int i = 0; i < karts.Count; i++)
         {
             KartTracker tracker = trackers[karts[i]];
             int placeCheckPointIndex = tracker.PlaceCheckPointIndex;
             int lapInternal = tracker.Placelap;
             float closestDst = tracker.GetClosestDistance(checkPoints[placeCheckPointIndex]);
-            kartPositions.Add(new KartPositionInfoV2(i, lapInternal, placeCheckPointIndex, closestDst));
+            kartPositions.Add(new KartPositionInfo(i, lapInternal, placeCheckPointIndex, closestDst));
 
-            kartTimes[i] = karts[i].gameObject.name +" Lap: " + lapInternal + " CP: "+ placeCheckPointIndex + " Dst: " + closestDst.ToString();
+            kartPlaceInfo[i] = karts[i].gameObject.name + " Lap: " + lapInternal + " CP: " + placeCheckPointIndex + " Dst: " + closestDst.ToString();
         }
         kartPositions.Sort();
         kartPositions.Reverse();
@@ -190,18 +117,17 @@ public class RaceManager : MonoBehaviour
         {
             trackers[karts[kartPositions[i].kartIndex]].Place = i + 1;
             kartPlaces[i] = karts[kartPositions[i].kartIndex].name;
-
         }
     }
 
-    private class KartPositionInfoV2 : IEquatable<KartPositionInfoV2>, IComparable<KartPositionInfoV2>
+    private class KartPositionInfo : IEquatable<KartPositionInfo>, IComparable<KartPositionInfo>
     {
         public int kartIndex;
         public int Lap;
         public int lastCheckPoint;
         public float DistanceToNextCheckPoint;
 
-        public KartPositionInfoV2(int kartIndex, int lap, int lastCheckPoint, float distanceToNextCheckPoint)
+        public KartPositionInfo(int kartIndex, int lap, int lastCheckPoint, float distanceToNextCheckPoint)
         {
             this.kartIndex = kartIndex;
             Lap = lap;
@@ -209,12 +135,12 @@ public class RaceManager : MonoBehaviour
             DistanceToNextCheckPoint = distanceToNextCheckPoint;
         }
 
-        public bool Equals(KartPositionInfoV2 other)
+        public bool Equals(KartPositionInfo other)
         {
             return other.kartIndex == this.kartIndex;
         }
 
-        public int CompareTo(KartPositionInfoV2 other)
+        public int CompareTo(KartPositionInfo other)
         {
             if (other == null)
             {
@@ -272,7 +198,7 @@ public class RaceManager : MonoBehaviour
         //{
         //    Debug.Log(kart.name + " moved down to " + newPlace + " place from " + oldPlace + " place.");
         //}
-        if(kart.name == "Red")
+        if (kart.name == "Red")
         {
             ui.Place = newPlace;
         }
@@ -340,7 +266,7 @@ public class RaceManager : MonoBehaviour
 
     public delegate void CorrectCheckPoint(ArcadeKart kart);
     public delegate void WrongCheckPoint(ArcadeKart kart);
-    public delegate void PlaceChanged(ArcadeKart kart,int oldPlace, int newPlace);
+    public delegate void PlaceChanged(ArcadeKart kart, int oldPlace, int newPlace);
     #endregion
 
     public class KartTracker
@@ -351,7 +277,6 @@ public class RaceManager : MonoBehaviour
         public CheckPoint finishLineCheckPoint = null;
         public CheckPoint CurrentLapEndPoint;
         public int laps;
-        private int place = -1;
         public int currentLap = 0;
         public int nextCheckPointIndex;
         public int totalCheckpoints = 0;
@@ -368,6 +293,29 @@ public class RaceManager : MonoBehaviour
 
         public PlaceChanged OnPlaceChanged;
 
+        private int place = -1;
+        public int Place
+        {
+            set
+            {
+                if (place != value)
+                {
+                    int oldPlace = place;
+                    place = value;
+                    if (place > 0)
+                    {
+                        kart.kartSpeedMul = 1f + (value / 100f);
+                        OnPlaceChanged?.Invoke(kart, oldPlace, place);
+                    }
+                    kart.place = value;
+                }
+            }
+            get { return place; }
+        }
+
+        public int PlaceCheckPointIndex;
+        public int Placelap;
+
         public float GetClosestDistance(CheckPoint checkPoint)
         {
             Vector3 kartPos = kart.transform.position;
@@ -380,8 +328,8 @@ public class RaceManager : MonoBehaviour
 
 
             return Mathf.Min(
-                Vector3.Distance(kartPos, checkCentre), 
-                Vector3.Distance(kartPos, checkLeft), 
+                Vector3.Distance(kartPos, checkCentre),
+                Vector3.Distance(kartPos, checkLeft),
                 Vector3.Distance(kartPos, checkRight),
                 Vector3.Distance(kartPos, CentreLeft),
                 Vector3.Distance(kartPos, CentreRight));
@@ -398,28 +346,6 @@ public class RaceManager : MonoBehaviour
             PlaceCheckPointIndex = nextCheckPointIndex = startLine.index;
             kart.tracker = this;
         }
-
-        public int Place
-        {
-            set
-            {
-                if (place != value)
-                {
-                    int oldPlace = place;
-                    place = value;
-                    if (place > 0)
-                    {
-                        kart.kartSpeedMul = 1f + (value / 100f);
-                        OnPlaceChanged?.Invoke(kart,oldPlace, place);
-                    }
-                    kart.place = value;
-                }
-            }
-            get { return place; }
-        }
-
-        public int PlaceCheckPointIndex;
-        public int Placelap;
 
         public void HandleCheckPointEnter(CheckPoint checkPoint)
         {
@@ -447,7 +373,7 @@ public class RaceManager : MonoBehaviour
         {
             if (checkPoint.index == nextCheckPointIndex)
             {
-                Debug.Log("Correct Point");
+                //Debug.Log("Correct Point");
                 OnCorrectCheckPoint?.Invoke(kart);
                 nextCheckPointIndex = (nextCheckPointIndex + 1) % totalCheckpoints;
 
@@ -465,7 +391,7 @@ public class RaceManager : MonoBehaviour
                             if (currentLap > laps)
                             {
                                 finishLineCheckPoint = checkPoint;
-                                Debug.Log("Finished Race");
+                                //Debug.Log("Finished Race");
                                 OnCircuitComplete?.Invoke(kart);
                                 return;
                             }
@@ -486,18 +412,18 @@ public class RaceManager : MonoBehaviour
                         lastCheckPoint = checkPoint;
                         currentLap = 1;
                         OnCircuitStart?.Invoke(kart);
-                       //Debug.Log("started Race");
+                        //Debug.Log("started Race");
                     }
                 }
             }
             else
             {
                 // wrong checkpoint passed.
-                if(nextCheckPointIndex == 0 && checkPoint.index+1 == totalCheckpoints)
+                if (nextCheckPointIndex == 0 && checkPoint.index + 1 == totalCheckpoints)
                 {
 
                 }
-                else if(checkPoint.index < nextCheckPointIndex)
+                else if (checkPoint.index < nextCheckPointIndex)
                 {
 
                 }
@@ -515,10 +441,6 @@ public class RaceManager : MonoBehaviour
         public void FixCheckPoint()
         {
             nextCheckPointIndex = lastWrongCheckPoint.index;
-        }
-        public void NextLap()
-        {
-            lastCheckPoint = null;
         }
     }
 }

@@ -33,7 +33,8 @@ public class CheckPoint : MonoBehaviour
     private void Start()
     {
         collider.isTrigger = true;
-        SetEnabled(false);
+        enableControlPoints = false;
+        SetEnabled();
     }
 
     private void OnTriggerExit(Collider other)
@@ -62,7 +63,7 @@ public class CheckPoint : MonoBehaviour
         }
     }
 
-    private void SetEnabled(bool enabled)
+    private void SetEnabled()
     {
         left.gameObject.SetActive(enableControlPoints);
         Top.gameObject.SetActive(enableControlPoints);
@@ -74,7 +75,7 @@ public class CheckPoint : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            SetEnabled(false);
+            SetEnabled();
             return;
         }
         if (enableControlPoints)
@@ -87,7 +88,7 @@ public class CheckPoint : MonoBehaviour
 
         }
 
-        SetEnabled(enableControlPoints);
+        SetEnabled();
         //Debug.DrawLine((Bottom.position + Top.position) / 2, Player.position, Color.white);
         //Debug.DrawLine(left.position, Player.position, Color.red);
         //Debug.DrawLine(right.position, Player.position, Color.green);

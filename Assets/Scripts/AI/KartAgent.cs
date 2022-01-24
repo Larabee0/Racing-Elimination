@@ -57,10 +57,10 @@ public class KartAgent : Agent, IInput
         kart.Rigidbody.isKinematic = false;
     }
 
-    private void Update()
-    {
-        Debug.DrawRay(raceManager.checkPoints[kart.tracker.nextCheckPointIndex].transform.position, NextChockPointFoward);
-    }
+    //private void Update()
+    //{
+    //    Debug.DrawRay(raceManager.checkPoints[kart.tracker.nextCheckPointIndex].transform.position, NextChockPointFoward);
+    //}
     #endregion
 
     #region AI Events and Data Inputs
@@ -71,23 +71,14 @@ public class KartAgent : Agent, IInput
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("Bumped wall");
+            //Debug.Log("Bumped wall");
             AddReward(-0.6f);
-        }
-        if (collision.transform.CompareTag("Kart"))
-        {
-            Debug.Log("Bumped Kart");
-            AddReward(-0.5f);
         }
     }
 
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
-        {
-            AddReward(-0.1f);
-        }
-        if (collision.transform.CompareTag("Kart"))
         {
             AddReward(-0.1f);
         }
@@ -257,7 +248,6 @@ public class KartAgent : Agent, IInput
             true => baseSpeed * (Random.Range(0,2) == 1? 1f + speedRange.y: speedRange.x),
             false => baseSpeed
         };
-        //Debug.Log(kart.name+" "+baseSpeed + "|" + stats.TopSpeed);
         kart.baseStats = stats;
     }
 }
