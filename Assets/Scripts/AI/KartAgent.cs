@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
@@ -7,78 +5,166 @@ using Unity.MLAgents.Actuators;
 
 public class KartAgent : Agent, IInput
 {
-    VectorSensor sensors;
-    ArcadeKart kart;
-    public LayerMask raycastLayers;
-    public float debugRaycastTime = 2f;
-    public float raycastDistance = 10;
-    public Transform[] raycasts;
-    float _acceleration;
-    public float Acceleration => _acceleration;
+    public RaceManager raceManager;
+    public bool invertCheckpointForward = false;
 
-    float _steering;
+    private float baseSpeed;
+    public Vector2 speedRange = Vector2.zero;
+
+    private ArcadeKart kart;
+    private Vector3 NextChockPointFoward
+    {
+        get
+        {
+            return invertCheckpointForward switch
+            {
+                true => -raceManager.checkPoints[kart.tracker.nextCheckPointIndex].transform.forward,
+                false => raceManager.checkPoints[kart.tracker.nextCheckPointIndex].transform.forward
+            };
+        }
+    }
+
+    private Vector3 spawnPosition;
+    private Quaternion spawnRot;
+
+    private float _acceleration;
+    private float _steering;
+
+    public float Acceleration => _acceleration;
     public float Steering => _steering;
 
-    public float rewardOnCheckpoint = 1;
-
-    Vector3 startingPos;
-    Quaternion startingRot;
-
+    #region Awake(), Start(), Update()
     private void Awake()
     {
-
         kart = GetComponent<ArcadeKart>();
-        startingPos = transform.position;
-        startingRot = transform.rotation;
-        
+        baseSpeed = kart.baseStats.TopSpeed;
+        speedRange.x = Mathf.Clamp(speedRange.x, 0.5f, 0.99f);
+        speedRange.y = Mathf.Clamp(speedRange.y, 0f, 0.5f);
+        spawnPosition = transform.position;
+        spawnRot = transform.rotation;
+        InvokeRepeating(nameof(KartStatMod), Random.Range(2.5f, 5f), Random.Range(5f, 7.5f));
     }
 
-    public void InternalCollectObserverses()
+    private void Start()
     {
-        sensors = new VectorSensor(raycasts.Length + 1);
-        sensors.AddObservation(kart.LocalSpeed());
-        for (int i = 0; i < raycasts.Length; i++)
+        kart.Rigidbody.isKinematic = true;
+        kart.tracker.OnCorrectCheckPoint += OnCarCorrectCheck;
+        kart.tracker.OnWrongCheckPoint += OnCarWrongCheck;
+        kart.tracker.OnCircuitComplete += OnRaceEnd;
+        kart.tracker.OnCircuitStart += OnRaceBegin;
+        kart.tracker.OnLapComplete += OnLapComplete;
+        kart.tracker.OnPlaceChanged += OnPlaceChanged;
+        kart.Rigidbody.isKinematic = false;
+    }
+
+    //private void Update()
+    //{
+    //    Debug.DrawRay(raceManager.checkPoints[kart.tracker.nextCheckPointIndex].transform.position, NextChockPointFoward);
+    //}
+    #endregion
+
+    #region AI Events and Data Inputs
+    #region AI rewards/penalities
+
+    #region CollisionEnter/Stay
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            AddRaycastVectorObs(raycasts[i]);
+            //Debug.Log("Bumped wall");
+            AddReward(-0.6f);
         }
-        CollectObservations(sensors);
     }
 
-
-    public void AgentReset()
+    private void OnCollisionStay(Collision collision)
     {
-        kart.transform.position = startingPos;
-        kart.transform.rotation = startingRot;
-        kart.ForceMove(Vector3.zero, Quaternion.identity);
-    }
-
-    public override void OnActionReceived(ActionBuffers actions)
-    {
-        base.OnActionReceived(actions);
-        _acceleration = actions.ContinuousActions[0];
-        if (_acceleration > 0) { _acceleration = 1; }
-        _steering = actions.ContinuousActions[1];
-
-        AddReward(kart.LocalSpeed()*0.001f);
-    }
-
-    void AddRaycastVectorObs(Transform ray)
-    {
-        RaycastHit hitInfo = new RaycastHit();
-        var hit = Physics.Raycast(ray.position, ray.forward, out hitInfo, raycastDistance, raycastLayers.value, QueryTriggerInteraction.Ignore);
-        var distance = hitInfo.distance;
-        if (!hit) distance = raycastDistance;
-        var obs = distance / raycastDistance;
-        sensors.AddObservation(obs);
-
-        if (distance < 1f)
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            this.EndEpisode();
-            this.AgentReset();
+            AddReward(-0.1f);
         }
-        Debug.DrawRay(ray.position, ray.forward * distance, Color.Lerp(Color.red, Color.green, obs), Time.deltaTime * debugRaycastTime);
+    }
+    #endregion
+
+    #region OnRaceBegin/End & Laps
+    private void OnRaceBegin(ArcadeKart agent)
+    {
+
     }
 
+    private void OnLapComplete(ArcadeKart agent)
+    {
+        if (agent == kart)
+        {
+            AddReward(3f);
+        }
+    }
+
+    public void OnRaceEnd(ArcadeKart agent)
+    {
+        //AddReward(5f);
+        raceManager.EndAllEpisodes(true);
+    }
+    #endregion
+
+    #region CheckPoints
+    private int wrongCheckPoints = 0;
+    public void OnCarCorrectCheck(ArcadeKart agent)
+    {
+        if (agent == kart)
+        {
+            wrongCheckPoints = 0;
+            AddReward(0.75f);
+        }
+    }
+
+    private void OnCarWrongCheck(ArcadeKart agent)
+    {
+        if (agent == kart)
+        {
+            wrongCheckPoints += 1;
+            //Debug.Log("Incorrect Point");
+            AddReward(-2f);
+            if(wrongCheckPoints > 1)
+            {
+                Debug.LogWarning("Turning AI Around");
+                AddReward(-4f);
+                kart.Rigidbody.isKinematic = true;
+                transform.Rotate(new Vector3(0, 1f, 0), 180f, Space.Self);
+                raceManager.trackers[kart].FixCheckPoint();
+                kart.Rigidbody.isKinematic = false;
+            }
+        }
+    }
+    #endregion
+
+    public void OnPlaceChanged(ArcadeKart kart, int oldPlace, int newPlace)
+    {
+        placeCurrent = newPlace;
+    }
+
+    #endregion
+
+    public override void OnEpisodeBegin()
+    {
+        raceManager.ResetKart(kart);
+        transform.SetPositionAndRotation(spawnPosition, spawnRot);
+        Start();
+    }
+
+    int placeLastObs;
+    int placeCurrent;
+
+    public override void CollectObservations(VectorSensor sensor)
+    {
+        float directionDot = Vector3.Dot(transform.forward, NextChockPointFoward);
+        sensor.AddObservation(directionDot);
+        sensor.AddObservation(kart.LocalSpeed());
+        AddReward(kart.LocalSpeed() * .001f);
+        placeLastObs = placeCurrent;
+    }
+    #endregion
+
+    #region Control outputs to kart & IInput
     public InputData GenerateInput()
     {
         return new InputData
@@ -87,5 +173,81 @@ public class KartAgent : Agent, IInput
             Brake = Acceleration < 0,
             TurnInput = Steering
         };
+    }
+
+    #region AI Input
+    public override void OnActionReceived(ActionBuffers actions)
+    {
+        ActionSegment<int> discreteActions = actions.DiscreteActions;
+        switch (discreteActions[0])
+        {
+            case 0:
+                _steering = -1f;
+                break;
+            case 1:
+                _steering = 0f;
+                break;
+            case 2:
+                _steering = 1f;
+                break;
+        }
+        switch (discreteActions[1])
+        {
+            case 0:
+                _acceleration = -1f;
+                break;
+            case 1:
+                _acceleration = 0f;
+                break;
+            case 2:
+                _acceleration = 1f;
+                break;
+        }
+    }
+    #endregion
+
+    #region Human Input
+    public override void Heuristic(in ActionBuffers actionsOut)
+    {
+        ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
+        switch (Input.GetAxis("Horizontal"))
+        {
+            case 0:
+                discreteActions[0] = 1;
+                break;
+            case > 0:
+                discreteActions[0] = 2;
+                break;
+            case < 0:
+                discreteActions[0] = 0;
+                break;
+        }
+        switch (Input.GetAxis("Vertical"))
+        {
+            case 0:
+                discreteActions[1] = 1;
+                break;
+            case > 0:
+                discreteActions[1] = 2;
+                break;
+            case < 0:
+                discreteActions[1] = 0;
+                break;
+        }
+    }
+    #endregion
+
+    #endregion
+
+    private void KartStatMod()
+    {
+        ArcadeKart.Stats stats = kart.baseStats;
+        bool ModSpeedToNoNet = Random.Range(1, 4) % 2 == 0;
+        stats.TopSpeed = ModSpeedToNoNet switch
+        {
+            true => baseSpeed * (Random.Range(0,2) == 1? 1f + speedRange.y: speedRange.x),
+            false => baseSpeed
+        };
+        kart.baseStats = stats;
     }
 }

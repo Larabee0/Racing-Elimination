@@ -4,7 +4,7 @@ using UnityEngine;
 using PathCreation;
 public class TrackToCheckPoint : MonoBehaviour
 {
-    public PathCreator  path;
+    public PathCreator path;
     [Range(1, 50)]
     public float resolution = 1;
 
@@ -33,9 +33,7 @@ public class TrackToCheckPoint : MonoBehaviour
 
     private void Spawn(Vector3 Pos, Vector3 forward)
     {
-        CheckPoint tracker = Instantiate( trackerPrefab,Pos,Quaternion.identity,transform);
+        CheckPoint tracker = Instantiate(trackerPrefab, Pos, Quaternion.identity, transform);
         tracker.transform.forward = forward;
-        tracker.Player = player;
     }
-
 }

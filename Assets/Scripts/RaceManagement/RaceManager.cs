@@ -1,44 +1,446 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using PathCreation;
 
 public class RaceManager : MonoBehaviour
 {
-    public List<CheckPoint> checkPoints = new List<CheckPoint>();
+    public VertexPath path;
+    public GameObject checkPointContainer;
+    public List<CheckPoint> checkPoints = new();
     public CheckPoint startFinishLine;
+    public int indexOfFstartFinishLine;
+    private List<ArcadeKart> karts;
+    public Dictionary<ArcadeKart, KartTracker> trackers;
+    [Range(1, 50)]
+    public int Laps = 1;
+    public bool reverseCheckPoints = false;
+    public TimerLapCounter ui;
 
+    public ArcadeKart playerKart = null;
 
-    public class KartAndLastPoin
+    public List<string> kartPlaceInfo = new();
+    public List<string> kartPlaces = new();
+
+    public KartColourFactory kartColours;
+
+    public void Awake()
     {
-        public CheckPoint lastCheckPoint = null;
-        public CheckPoint finishLineCheckPoint = null;
-        public bool HasStarted { get { return lastCheckPoint != null; } }
-        public bool HasFinished { get { return HasStarted && finishLineCheckPoint != null; } }
-
-        public void HandleStartFinish(CheckPoint checkPoint)
+        playerKart = null;
+        path = checkPointContainer.GetComponent<PathCreator>().path;
+        List<CheckPoint> cPInternal = new(checkPointContainer.GetComponentsInChildren<CheckPoint>());
+        if (reverseCheckPoints)
         {
-            if (HasStarted)
+            cPInternal.Reverse();
+        }
+        if (ui == null)
+        {
+            Debug.LogWarning("UI is null! No ui output will be made.");
+        }
+
+        cPInternal.ForEach(p => { startFinishLine = p.StartFinishLine ? p : startFinishLine; p.OnKartPassedCheckPoint += OnKartPassedCheckPoint; p.OnKartEnterCheckPoint += OnKartEnterCheckPoint; });
+        int start = (cPInternal.IndexOf(startFinishLine) + 1) % cPInternal.Count;
+
+
+        for (int i = start, count = 0; count < cPInternal.Count; count++)
+        {
+            checkPoints.Add(cPInternal[i]);
+            cPInternal[i].index = count;
+            i = (i + 1) % cPInternal.Count;
+        }
+
+        if (startFinishLine == null)
+        {
+            Debug.LogError("No start finish line!");
+            enabled = false;
+        }
+        indexOfFstartFinishLine = cPInternal.IndexOf(startFinishLine);
+        karts = new List<ArcadeKart>(FindObjectsOfType<ArcadeKart>());
+        trackers = new Dictionary<ArcadeKart, KartTracker>(karts.Count);
+        karts.ForEach(k =>
+        {
+            if(playerKart == null && k.TryGetComponent(out UniversalInput universalInput))
             {
-                if (HasFinished)
+                playerKart = k;
+            }
+            //kartPos.Add(k.transform.position);
+            kartPlaceInfo.Add(k.name);
+            kartPlaces.Add(k.name);
+            ResetKart(k);
+        });
+        if (playerKart == null) { Debug.LogWarning("No Player Kart"); }
+
+        if (kartColours != null)
+        {
+            kartColours.PaintKarts(karts);
+        }
+    }
+
+    private void Update()
+    {
+        DetermineFirstPlace();
+    }
+
+    public void ResetKart(ArcadeKart kart)
+    {
+        if (trackers.ContainsKey(kart))
+        {
+            trackers.Remove(kart);
+        }
+        trackers.Add(kart, new KartTracker(kart, Laps, checkPoints.Count, startFinishLine, startFinishLine, startFinishLine));
+        if (ui != null)
+        {
+            trackers[kart].OnCircuitStart += OnKartStartCircuit;
+            trackers[kart].OnCircuitComplete += OnKartFinishCircuit;
+            trackers[kart].OnLapComplete += OnKartCompleteLap;
+            trackers[kart].OnPlaceChanged += OnKartPlaceChanged;
+        }
+    }
+
+    public void DetermineFirstPlace()
+    {
+        List<KartPositionInfo> kartPositions = new(karts.Count);
+        for (int i = 0; i < karts.Count; i++)
+        {
+            KartTracker tracker = trackers[karts[i]];
+            int placeCheckPointIndex = tracker.PlaceCheckPointIndex;
+            int lapInternal = tracker.Placelap;
+            float closestDst = tracker.GetClosestDistance(checkPoints[placeCheckPointIndex]);
+            kartPositions.Add(new KartPositionInfo(i, lapInternal, placeCheckPointIndex, closestDst));
+
+            kartPlaceInfo[i] = karts[i].gameObject.name + " Lap: " + lapInternal + " CP: " + placeCheckPointIndex + " Dst: " + closestDst.ToString();
+        }
+        kartPositions.Sort();
+        kartPositions.Reverse();
+        for (int i = 0; i < kartPositions.Count; i++)
+        {
+            trackers[karts[kartPositions[i].kartIndex]].Place = i + 1;
+            kartPlaces[i] = karts[kartPositions[i].kartIndex].name;
+        }
+    }
+
+    private class KartPositionInfo : IEquatable<KartPositionInfo>, IComparable<KartPositionInfo>
+    {
+        public int kartIndex;
+        public int Lap;
+        public int lastCheckPoint;
+        public float DistanceToNextCheckPoint;
+
+        public KartPositionInfo(int kartIndex, int lap, int lastCheckPoint, float distanceToNextCheckPoint)
+        {
+            this.kartIndex = kartIndex;
+            Lap = lap;
+            this.lastCheckPoint = lastCheckPoint;
+            DistanceToNextCheckPoint = distanceToNextCheckPoint;
+        }
+
+        public bool Equals(KartPositionInfo other)
+        {
+            return other.kartIndex == this.kartIndex;
+        }
+
+        public int CompareTo(KartPositionInfo other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            else
+            {
+                if (Lap > other.Lap)
                 {
-                    return;
+                    return 1;
+                }
+                else if (Lap < other.Lap)
+                {
+                    return -1;
                 }
                 else
                 {
-                    finishLineCheckPoint = checkPoint;
-                    // invoke Finish Handle;
+                    if (lastCheckPoint > other.lastCheckPoint)
+                    {
+                        return 1;
+                    }
+                    else if (lastCheckPoint < other.lastCheckPoint)
+                    {
+                        return -1;
+                    }
+                    else
+                    {
+                        if (DistanceToNextCheckPoint > other.DistanceToNextCheckPoint)
+                        {
+                            return -1;
+                        }
+                        else if (DistanceToNextCheckPoint < other.DistanceToNextCheckPoint)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #region EventImplentations
+
+    public void OnKartPlaceChanged(ArcadeKart kart, int oldPlace, int newPlace)
+    {
+        //if(oldPlace > newPlace)
+        //{
+        //    Debug.Log(kart.name + " moved up to " + newPlace + " place from " + oldPlace + " place.");
+        //}
+        //else
+        //{
+        //    Debug.Log(kart.name + " moved down to " + newPlace + " place from " + oldPlace + " place.");
+        //}
+        if (kart.name == "Red")
+        {
+            ui.Place = newPlace;
+        }
+    }
+
+    public void OnKartPassedCheckPoint(KartPassedCheckPointArgs f)
+    {
+        CheckPoint sender = f.sender;
+        ArcadeKart kart = f.kart;
+        KartTracker tracker = trackers[kart];
+        tracker.HandleCheckPoint(sender);
+    }
+
+    public void OnKartEnterCheckPoint(KartPassedCheckPointArgs f)
+    {
+        CheckPoint sender = f.sender;
+        ArcadeKart kart = f.kart;
+        KartTracker tracker = trackers[kart];
+        tracker.HandleCheckPointEnter(sender);
+    }
+
+    public void OnKartStartCircuit(ArcadeKart kart)
+    {
+        ui.HideFinished();
+        ui.CurrentLap = trackers[kart].currentLap;
+        ui.MaxLaps = Laps;
+        ui.ResetTimer();
+        ui.enabled = true;
+    }
+
+    public void OnKartCompleteLap(ArcadeKart kart)
+    {
+        ui.CurrentLap = trackers[kart].currentLap;
+        ui.ResetTimer();
+    }
+
+    public void OnKartFinishCircuit(ArcadeKart kart)
+    {
+        ui.enabled = false;
+        ui.ShowFinished();
+        ui.ResetTimer();
+        ui.TotalTime();
+    }
+
+    public void EndAllEpisodes(bool endOfRace = false)
+    {
+        for (int i = 0; i < karts.Count; i++)
+        {
+            if (karts[i].TryGetComponent(out KartAgent agent))
+            {
+                if (endOfRace)
+                {
+                    agent.AddReward(karts.Count - karts[i].place);
+                }
+                agent.EndEpisode();
+            }
+        }
+    }
+    #endregion
+
+    #region Events
+    public delegate void LapComplete(ArcadeKart kart);
+    public delegate void CircuitComplete(ArcadeKart kart);
+    public delegate void CircuitStart(ArcadeKart kart);
+
+    public delegate void CorrectCheckPoint(ArcadeKart kart);
+    public delegate void WrongCheckPoint(ArcadeKart kart);
+    public delegate void PlaceChanged(ArcadeKart kart, int oldPlace, int newPlace);
+    #endregion
+
+    public class KartTracker
+    {
+        public ArcadeKart kart;
+        public CheckPoint startLine = null;
+        public CheckPoint lastCheckPoint = null;
+        public CheckPoint finishLineCheckPoint = null;
+        public CheckPoint CurrentLapEndPoint;
+        public int laps;
+        public int currentLap = 0;
+        public int nextCheckPointIndex;
+        public int totalCheckpoints = 0;
+        public CheckPoint RaceEndCheckPoint;
+        public bool HasStartedRace { get { return lastCheckPoint != null; } }
+        public bool HasFinishedRace { get { return HasStartedRace && finishLineCheckPoint != null; } }
+
+        public LapComplete OnLapComplete;
+        public CircuitComplete OnCircuitComplete;
+        public CircuitStart OnCircuitStart;
+
+        public CorrectCheckPoint OnCorrectCheckPoint;
+        public WrongCheckPoint OnWrongCheckPoint;
+
+        public PlaceChanged OnPlaceChanged;
+
+        private int place = -1;
+        public int Place
+        {
+            set
+            {
+                if (place != value)
+                {
+                    int oldPlace = place;
+                    place = value;
+                    if (place > 0)
+                    {
+                        kart.kartSpeedMul = 1f + (value / 100f);
+                        OnPlaceChanged?.Invoke(kart, oldPlace, place);
+                    }
+                    kart.place = value;
+                }
+            }
+            get { return place; }
+        }
+
+        public int PlaceCheckPointIndex;
+        public int Placelap;
+
+        public float GetClosestDistance(CheckPoint checkPoint)
+        {
+            Vector3 kartPos = kart.transform.position;
+            Vector3 checkCentre = checkPoint.CentrePos;
+            Vector3 checkLeft = checkPoint.RightPos;
+            Vector3 checkRight = checkPoint.LeftPos;
+            checkCentre.y = checkRight.y = checkLeft.y = kartPos.y = 0;
+            Vector3 CentreLeft = (checkCentre + checkLeft) / 2f;
+            Vector3 CentreRight = (checkCentre + checkLeft) / 2f;
+
+
+            return Mathf.Min(
+                Vector3.Distance(kartPos, checkCentre),
+                Vector3.Distance(kartPos, checkLeft),
+                Vector3.Distance(kartPos, checkRight),
+                Vector3.Distance(kartPos, CentreLeft),
+                Vector3.Distance(kartPos, CentreRight));
+        }
+
+        public KartTracker(ArcadeKart kart, int laps, int totalCheckPoints, CheckPoint startLine, CheckPoint finishLine, CheckPoint LapEndPoint)
+        {
+            this.kart = kart;
+            this.totalCheckpoints = totalCheckPoints;
+            this.laps = laps;
+            this.startLine = startLine;
+            RaceEndCheckPoint = finishLine;
+            CurrentLapEndPoint = LapEndPoint;
+            PlaceCheckPointIndex = nextCheckPointIndex = startLine.index;
+            kart.tracker = this;
+        }
+
+        public void HandleCheckPointEnter(CheckPoint checkPoint)
+        {
+            if (checkPoint.index == PlaceCheckPointIndex)
+            {
+                PlaceCheckPointIndex = (PlaceCheckPointIndex + 1) % totalCheckpoints;
+                if (HasStartedRace)
+                {
+                    if (checkPoint == CurrentLapEndPoint)
+                    {
+                        Placelap++;
+                    }
+                }
+                else
+                {
+                    if (checkPoint == startLine)
+                    {
+                        Placelap = 1;
+                    }
+                }
+            }
+        }
+
+        public void HandleCheckPoint(CheckPoint checkPoint)
+        {
+            if (checkPoint.index == nextCheckPointIndex)
+            {
+                //Debug.Log("Correct Point");
+                OnCorrectCheckPoint?.Invoke(kart);
+                nextCheckPointIndex = (nextCheckPointIndex + 1) % totalCheckpoints;
+
+                if (HasStartedRace)
+                {
+                    if (HasFinishedRace)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        if (checkPoint == CurrentLapEndPoint)
+                        {
+                            currentLap++;
+                            if (currentLap > laps)
+                            {
+                                finishLineCheckPoint = checkPoint;
+                                //Debug.Log("Finished Race");
+                                OnCircuitComplete?.Invoke(kart);
+                                return;
+                            }
+                            else
+                            {
+                                CurrentLapEndPoint = checkPoint;
+                                OnLapComplete?.Invoke(kart);
+                                //Debug.Log("Next Lap: " + (currentLap));
+                            }
+                        }
+                    }
+                    lastCheckPoint = checkPoint;
+                }
+                else
+                {
+                    if (checkPoint == startLine)
+                    {
+                        lastCheckPoint = checkPoint;
+                        currentLap = 1;
+                        OnCircuitStart?.Invoke(kart);
+                        //Debug.Log("started Race");
+                    }
                 }
             }
             else
             {
-                lastCheckPoint = checkPoint;
-                // invoke start handle
+                // wrong checkpoint passed.
+                if (nextCheckPointIndex == 0 && checkPoint.index + 1 == totalCheckpoints)
+                {
+
+                }
+                else if (checkPoint.index < nextCheckPointIndex)
+                {
+
+                }
+                else
+                {
+                }
+                if (HasStartedRace)
+                {
+                    lastWrongCheckPoint = checkPoint;
+                    OnWrongCheckPoint?.Invoke(kart);
+                }
             }
         }
-
-        public void NextLap()
+        private CheckPoint lastWrongCheckPoint;
+        public void FixCheckPoint()
         {
-            lastCheckPoint = null;
+            nextCheckPointIndex = lastWrongCheckPoint.index;
         }
     }
 }

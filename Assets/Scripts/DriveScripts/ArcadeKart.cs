@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ArcadeKart : MonoBehaviour
 {
+    public RaceManager.KartTracker tracker;
+    public int place;
+    public float kartSpeedMul = 1f;
+
     [Serializable]
     public struct Stats
     {
@@ -64,7 +68,7 @@ public class ArcadeKart : MonoBehaviour
     public float AirPercent { get; private set; }
     public float GroundPercent { get; private set; }
 
-    public Stats baseStats = new Stats
+    public Stats baseStats = new()
     {
         TopSpeed = 10f,
         Acceleration = 5f,
@@ -137,8 +141,8 @@ public class ArcadeKart : MonoBehaviour
     float m_CurrentGrip = 1.0f;
     float m_DriftTurningPower = 0.0f;
     float m_PreviousGroundPercent = 1.0f;
-    readonly List<(GameObject trailRoot, WheelCollider wheel, TrailRenderer trail)> m_DriftTrailInstances = new List<(GameObject, WheelCollider, TrailRenderer)>();
-    readonly List<(WheelCollider wheel, float horizontalOffset, float rotation, ParticleSystem sparks)> m_DriftSparkInstances = new List<(WheelCollider, float, float, ParticleSystem)>();
+    //readonly List<(GameObject trailRoot, WheelCollider wheel, TrailRenderer trail)> m_DriftTrailInstances = new();
+    //readonly List<(WheelCollider wheel, float horizontalOffset, float rotation, ParticleSystem sparks)> m_DriftSparkInstances = new();
 
     // can the kart move?
     bool m_CanMove = true;
@@ -146,13 +150,13 @@ public class ArcadeKart : MonoBehaviour
     Stats m_FinalStats;
 
     Quaternion m_LastValidRotation;
-    Vector3 m_LastValidPosition;
+    //Vector3 m_LastValidPosition;
     Vector3 m_LastCollisionNormal;
     bool m_HasCollision;
     bool m_InAir = false;
 
     public void SetCanMove(bool move) => m_CanMove = move;
-    public float GetMaxSpeed() => Mathf.Max(m_FinalStats.TopSpeed, m_FinalStats.ReverseSpeed);
+    public float GetMaxSpeed() => Mathf.Max(m_FinalStats.TopSpeed * kartSpeedMul, m_FinalStats.ReverseSpeed);
 
     void UpdateSuspensionParams(WheelCollider wheel)
     {
@@ -168,12 +172,12 @@ public class ArcadeKart : MonoBehaviour
     {
         Rigidbody = GetComponent<Rigidbody>();
         m_Inputs = GetComponents<IInput>();
-
+        //Debug.Log(m_Inputs.Length);
         UpdateSuspensionParams(FrontLeftWheel);
         UpdateSuspensionParams(FrontRightWheel);
         UpdateSuspensionParams(RearLeftWheel);
         UpdateSuspensionParams(RearRightWheel);
-
+        kartSpeedMul = kartSpeedMul == 0 ? 1f : kartSpeedMul;
         m_CurrentGrip = baseStats.Grip;
     }
 
@@ -193,17 +197,17 @@ public class ArcadeKart : MonoBehaviour
         Rigidbody.centerOfMass = transform.InverseTransformPoint(CenterOfMass.position);
 
         int groundedCount = 0;
-        if (FrontLeftWheel.isGrounded && FrontLeftWheel.GetGroundHit(out WheelHit hit))
+        if (FrontLeftWheel.isGrounded && FrontLeftWheel.GetGroundHit(out _))
             groundedCount++;
-        if (FrontRightWheel.isGrounded && FrontRightWheel.GetGroundHit(out hit))
+        if (FrontRightWheel.isGrounded && FrontRightWheel.GetGroundHit(out _))
             groundedCount++;
-        if (RearLeftWheel.isGrounded && RearLeftWheel.GetGroundHit(out hit))
+        if (RearLeftWheel.isGrounded && RearLeftWheel.GetGroundHit(out _))
             groundedCount++;
-        if (RearRightWheel.isGrounded && RearRightWheel.GetGroundHit(out hit))
+        if (RearRightWheel.isGrounded && RearRightWheel.GetGroundHit(out _))
             groundedCount++;
 
         // calculate how grounded and airborne we are
-        GroundPercent = (float)groundedCount / 4.0f;
+        GroundPercent = groundedCount / 4.0f;
         AirPercent = 1 - GroundPercent;
 
         // apply vehicle physics
@@ -247,7 +251,7 @@ public class ArcadeKart : MonoBehaviour
         // while in the air, fall faster
         if (AirPercent >= 1)
         {
-            Rigidbody.velocity += Physics.gravity * Time.fixedDeltaTime * m_FinalStats.AddedGravity;
+            Rigidbody.velocity += m_FinalStats.AddedGravity * Time.fixedDeltaTime * Physics.gravity;
         }
     }
 
@@ -266,7 +270,7 @@ public class ArcadeKart : MonoBehaviour
             if (Mathf.Abs(dot) > 0.1f)
             {
                 float speed = Rigidbody.velocity.magnitude;
-                return dot < 0 ? -(speed / m_FinalStats.ReverseSpeed) : (speed / m_FinalStats.TopSpeed);
+                return dot < 0 ? -(speed / m_FinalStats.ReverseSpeed) : (speed / (m_FinalStats.TopSpeed* kartSpeedMul));
             }
             return 0f;
         }
@@ -305,7 +309,7 @@ public class ArcadeKart : MonoBehaviour
         bool localVelDirectionIsFwd = localVel.z >= 0;
 
         // use the max speed for the direction we are going--forward or reverse.
-        float maxSpeed = localVelDirectionIsFwd ? m_FinalStats.TopSpeed : m_FinalStats.ReverseSpeed;
+        float maxSpeed = localVelDirectionIsFwd ? (m_FinalStats.TopSpeed* kartSpeedMul) : m_FinalStats.ReverseSpeed;
         float accelPower = accelDirectionIsFwd ? m_FinalStats.Acceleration : m_FinalStats.ReverseAcceleration;
 
         float currentSpeed = Rigidbody.velocity.magnitude;
@@ -326,7 +330,7 @@ public class ArcadeKart : MonoBehaviour
 
         Quaternion turnAngle = Quaternion.AngleAxis(turningPower, transform.up);
         Vector3 fwd = turnAngle * transform.forward;
-        Vector3 movement = fwd * accelInput * finalAcceleration * ((m_HasCollision || GroundPercent > 0.0f) ? 1.0f : 0.0f);
+        Vector3 movement = ((m_HasCollision || GroundPercent > 0.0f) ? 1.0f : 0.0f) * accelInput * finalAcceleration * fwd;
 
         // forward movement
         bool wasOverMaxSpeed = currentSpeed >= maxSpeed;
@@ -466,15 +470,15 @@ public class ArcadeKart : MonoBehaviour
         }
         else if (validPosition)
         {
-            m_LastValidPosition = transform.position;
+            //m_LastValidPosition = transform.position;
             m_LastValidRotation.eulerAngles = new Vector3(0.0f, transform.rotation.y, 0.0f);
         }
     }
-    public void ForceMove(Vector3 positionDelta, Quaternion rotationDelta)
+    public void ForceMove(Quaternion rotationDelta)
     {
         //m_Velocity = Vector3.zero;
         IsDrifting = false;
-        m_LastValidPosition = positionDelta;
+        //m_LastValidPosition = positionDelta;
         m_LastValidRotation = rotationDelta;
     }
 }

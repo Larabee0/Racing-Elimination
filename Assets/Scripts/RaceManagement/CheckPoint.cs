@@ -2,35 +2,68 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void KartPassedCheckPoint(KartPassedCheckPointArgs f);
+public struct KartPassedCheckPointArgs
+{
+    public CheckPoint sender;
+    public ArcadeKart kart;
+}
 public class CheckPoint : MonoBehaviour
 {
-    public Transform Player;
+    //public Transform Player;
+
+    public Vector3 LeftPos { get { return left.transform.position; } }
+    public Vector3 RightPos { get { return left.transform.position; } }
+    public Vector3 CentrePos { get { return transform.position; } }
 
     public Transform left;
     public Transform Top;
     public Transform Bottom;
     public Transform right;
-
-    public BoxCollider collider;
+    [Range(0.1f, 2f)]
+    public float colliderLength = 0.25f;
+    public new BoxCollider collider;
     public bool enableControlPoints;
     public bool StartFinishLine = false;
+    public int index;
+    public KartPassedCheckPoint OnKartPassedCheckPoint;
+    public KartPassedCheckPoint OnKartEnterCheckPoint;
+
 
     private void Start()
     {
-        Player = GameObject.Find("GoKart3(WheelColliderV2)").transform;
         collider.isTrigger = true;
-        SetEnabled(false);
+        enableControlPoints = false;
+        SetEnabled();
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Tracker"))
         {
-            Debug.Log("Player Passed CheckPoint:" + GetInstanceID());
+            //Debug.Log("Kart Passed CheckPoint:" + GetInstanceID());
+            OnKartPassedCheckPoint?.Invoke(new KartPassedCheckPointArgs
+            {
+                sender = this,
+                kart = other.gameObject.GetComponentInParent<ArcadeKart>()
+            });
         }
     }
 
-    private void SetEnabled(bool enabled)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Tracker"))
+        {
+            //Debug.Log("Kart Passed CheckPoint:" + GetInstanceID());
+            OnKartEnterCheckPoint?.Invoke(new KartPassedCheckPointArgs
+            {
+                sender = this,
+                kart = other.gameObject.GetComponentInParent<ArcadeKart>()
+            });
+        }
+    }
+
+    private void SetEnabled()
     {
         left.gameObject.SetActive(enableControlPoints);
         Top.gameObject.SetActive(enableControlPoints);
@@ -42,7 +75,7 @@ public class CheckPoint : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            SetEnabled(false);
+            SetEnabled();
             return;
         }
         if (enableControlPoints)
@@ -51,11 +84,11 @@ public class CheckPoint : MonoBehaviour
             float centreX = ((left.localPosition + right.localPosition) / 2).x;
             float centreY = (Bottom.localPosition.y + Top.localPosition.y) / 2;
             collider.center = new Vector3(centreX, centreY, 0f);
-            collider.size = new Vector3(Vector3.Distance(left.localPosition, right.localPosition), Vector3.Distance(Bottom.localPosition, Top.localPosition), 1f);
+            collider.size = new Vector3(Vector3.Distance(left.localPosition, right.localPosition), Vector3.Distance(Bottom.localPosition, Top.localPosition), colliderLength);
 
         }
 
-        SetEnabled(enableControlPoints);
+        SetEnabled();
         //Debug.DrawLine((Bottom.position + Top.position) / 2, Player.position, Color.white);
         //Debug.DrawLine(left.position, Player.position, Color.red);
         //Debug.DrawLine(right.position, Player.position, Color.green);
