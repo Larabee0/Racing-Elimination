@@ -16,6 +16,10 @@ public class KartAgent : Agent, IInput
     {
         get
         {
+            if (raceManager.checkPoints!= null || raceManager.checkPoints[kart.tracker.nextCheckPointIndex] != null)
+            {
+                return transform.forward;
+            }
             return invertCheckpointForward switch
             {
                 true => -raceManager.checkPoints[kart.tracker.nextCheckPointIndex].transform.forward,
@@ -38,7 +42,7 @@ public class KartAgent : Agent, IInput
     {
         kart = GetComponent<ArcadeKart>();
         baseSpeed = kart.baseStats.TopSpeed;
-        speedRange.x = Mathf.Clamp(speedRange.x, 0.5f, 0.99f);
+        speedRange.x = Mathf.Clamp(speedRange.x, 0.5f, 1.1f);
         speedRange.y = Mathf.Clamp(speedRange.y, 0f, 0.5f);
         spawnPosition = transform.position;
         spawnRot = transform.rotation;
@@ -50,7 +54,7 @@ public class KartAgent : Agent, IInput
         kart.Rigidbody.isKinematic = true;
         kart.tracker.OnCorrectCheckPoint += OnCarCorrectCheck;
         kart.tracker.OnWrongCheckPoint += OnCarWrongCheck;
-        kart.tracker.OnCircuitComplete += OnRaceEnd;
+        //kart.tracker.OnCircuitComplete += OnRaceEnd;
         kart.tracker.OnCircuitStart += OnRaceBegin;
         kart.tracker.OnLapComplete += OnLapComplete;
         kart.tracker.OnPlaceChanged += OnPlaceChanged;
@@ -245,7 +249,7 @@ public class KartAgent : Agent, IInput
         bool ModSpeedToNoNet = Random.Range(1, 4) % 2 == 0;
         stats.TopSpeed = ModSpeedToNoNet switch
         {
-            true => baseSpeed * (Random.Range(0,2) == 1? 1f + speedRange.y: speedRange.x),
+            true => baseSpeed * (Random.Range(0, 2) == 1 ? (kart.place > 1) ? 1f + speedRange.y : 1 : speedRange.x),
             false => baseSpeed
         };
         kart.baseStats = stats;
