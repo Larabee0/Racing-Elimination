@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -268,6 +268,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1703658047}
   Top: {fileID: 2019146837}
   Bottom: {fileID: 1876300514}
@@ -772,6 +777,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1453657596}
   Top: {fileID: 399116978}
   Bottom: {fileID: 1640141645}
@@ -843,6 +853,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 38668955}
   Top: {fileID: 477238899}
   Bottom: {fileID: 1777939410}
@@ -1952,6 +1967,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 410537432}
   Top: {fileID: 39709186}
   Bottom: {fileID: 629080164}
@@ -3484,7 +3504,7 @@ MonoBehaviour:
   MaxStep: 6000
   raceManager: {fileID: 8878267538908566690}
   invertCheckpointForward: 0
-  speedRange: {x: 1.1, y: 0.15}
+  speedRange: {x: 0.9, y: 0.2}
 --- !u!114 &132145599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3628,11 +3648,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &143951586 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8878267538528605665, guid: 58f957c781c74eb4b92f30eaee714dcc, type: 3}
-  m_PrefabInstance: {fileID: 8878267538908566689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &154419460
 GameObject:
   m_ObjectHideFlags: 0
@@ -3823,7 +3838,7 @@ MonoBehaviour:
   MaxStep: 6000
   raceManager: {fileID: 8878267538908566690}
   invertCheckpointForward: 0
-  speedRange: {x: 1.1, y: 0.15}
+  speedRange: {x: 0.9, y: 0.2}
 --- !u!114 &154985570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4240,7 +4255,7 @@ MonoBehaviour:
   MaxStep: 6000
   raceManager: {fileID: 8878267538908566690}
   invertCheckpointForward: 0
-  speedRange: {x: 1.1, y: 0.15}
+  speedRange: {x: 0.9, y: 0.2}
 --- !u!114 &159669631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4544,6 +4559,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1922727536}
   Top: {fileID: 1756273236}
   Bottom: {fileID: 1611406420}
@@ -5708,6 +5728,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 871469906}
   Top: {fileID: 441813806}
   Bottom: {fileID: 448268673}
@@ -7400,6 +7425,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1768094613}
   Top: {fileID: 1824235541}
   Bottom: {fileID: 1203454011}
@@ -7666,7 +7696,7 @@ MonoBehaviour:
   MaxStep: 6000
   raceManager: {fileID: 8878267538908566690}
   invertCheckpointForward: 0
-  speedRange: {x: 1.1, y: 0.15}
+  speedRange: {x: 0.9, y: 0.2}
 --- !u!114 &348777790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8753,6 +8783,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 242936864}
   Top: {fileID: 1927639783}
   Bottom: {fileID: 1119057588}
@@ -8824,6 +8859,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1039246058}
   Top: {fileID: 2054575092}
   Bottom: {fileID: 1242226472}
@@ -9622,7 +9662,6 @@ MonoBehaviour:
   path: {fileID: 393146445}
   resolution: 10
   trackerPrefab: {fileID: 2986825389135590219, guid: 969556e82335d0f448ea89363fa16bbf, type: 3}
-  player: {fileID: 402096149}
 --- !u!114 &393146445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10163,10 +10202,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoKart3(WheelColliderV2)
       objectReference: {fileID: 0}
-    - target: {fileID: 4490468858073598249, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4490468858073598255, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -10211,9 +10246,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
     - target: {fileID: 4490468859935659528, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
       propertyPath: field of view
       value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490468859935659534, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
+      propertyPath: m_Antialiasing
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4490468859935659534, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
       propertyPath: m_RenderPostProcessing
@@ -10223,13 +10264,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
---- !u!4 &402096149 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4490468858073598255, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
-  m_PrefabInstance: {fileID: 402096148}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &402175851
 GameObject:
   m_ObjectHideFlags: 0
@@ -10943,6 +10980,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 369692338}
   Top: {fileID: 851003711}
   Bottom: {fileID: 483398831}
@@ -11262,6 +11304,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 272731553}
   Top: {fileID: 1097814567}
   Bottom: {fileID: 2102943346}
@@ -11416,6 +11463,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1767644604}
   Top: {fileID: 1829496251}
   Bottom: {fileID: 548430907}
@@ -12963,6 +13015,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 289939390}
   Top: {fileID: 44069817}
   Bottom: {fileID: 512807240}
@@ -13241,6 +13298,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1929282784}
   Top: {fileID: 727403085}
   Bottom: {fileID: 1644240246}
@@ -13811,6 +13873,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1059318179}
   Top: {fileID: 1963148323}
   Bottom: {fileID: 2094544356}
@@ -17170,6 +17237,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1498196213}
   Top: {fileID: 5419119}
   Bottom: {fileID: 2057814033}
@@ -18544,6 +18616,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 923381963}
   Top: {fileID: 46900022}
   Bottom: {fileID: 192140838}
@@ -19124,6 +19201,8 @@ Transform:
   m_Father: {fileID: 397380391}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+=======
 --- !u!1 &840405198
 GameObject:
   m_ObjectHideFlags: 0
@@ -19177,7 +19256,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840405198}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -19204,6 +19283,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Eliminating place: 00 in: 00 |'
+>>>>>>> Stashed changes
 --- !u!1 &841226857
 GameObject:
   m_ObjectHideFlags: 0
@@ -21117,7 +21197,7 @@ MonoBehaviour:
   MaxStep: 6000
   raceManager: {fileID: 8878267538908566690}
   invertCheckpointForward: 0
-  speedRange: {x: 1.1, y: 0.15}
+  speedRange: {x: 0.9, y: 0.2}
 --- !u!114 &922152460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21765,6 +21845,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1970251938}
   Top: {fileID: 1997055605}
   Bottom: {fileID: 713682835}
@@ -22171,6 +22256,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1844334964}
   Top: {fileID: 1871546768}
   Bottom: {fileID: 893484038}
@@ -22549,6 +22639,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 218035509}
   Top: {fileID: 1436630971}
   Bottom: {fileID: 1461447115}
@@ -22696,6 +22791,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 527477326}
   Top: {fileID: 2018917990}
   Bottom: {fileID: 1045808189}
@@ -22974,6 +23074,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 403131191}
   Top: {fileID: 1046419137}
   Bottom: {fileID: 188657259}
@@ -23076,6 +23181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 120151014}
   Top: {fileID: 1699658948}
   Bottom: {fileID: 637885659}
@@ -25087,6 +25197,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 866936088}
   Top: {fileID: 1558179366}
   Bottom: {fileID: 783760308}
@@ -26084,6 +26199,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1680926717}
   Top: {fileID: 651113625}
   Bottom: {fileID: 70488532}
@@ -26986,6 +27106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1163676471}
   Top: {fileID: 880370747}
   Bottom: {fileID: 363928038}
@@ -27425,25 +27550,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217673506}
   m_Mesh: {fileID: 2786440611349163606, guid: 41f6590e242d3a94199564f8b152b67e, type: 3}
---- !u!1 &1222536356 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -671678974399615114, guid: 46fb9b6a696969448815fa438c90f444, type: 3}
-  m_PrefabInstance: {fileID: 955041917}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1222536360
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222536356}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7307596836733185930, guid: 46fb9b6a696969448815fa438c90f444, type: 3}
 --- !u!1 &1227398273
 GameObject:
   m_ObjectHideFlags: 0
@@ -27772,6 +27878,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1309269143}
   Top: {fileID: 656087797}
   Bottom: {fileID: 283611024}
@@ -28009,6 +28120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1160092914}
   Top: {fileID: 2126625597}
   Bottom: {fileID: 252034291}
@@ -28277,6 +28393,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1018839735}
   Top: {fileID: 2043667579}
   Bottom: {fileID: 1668745372}
@@ -30696,11 +30817,11 @@ PrefabInstance:
       objectReference: {fileID: 8878267538908566690}
     - target: {fileID: 9158994091886803019, guid: f65766aacd62ebf42a8075423849b2ad, type: 3}
       propertyPath: speedRange.x
-      value: 1.1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 9158994091886803019, guid: f65766aacd62ebf42a8075423849b2ad, type: 3}
       propertyPath: speedRange.y
-      value: 0.15
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 9158994091886803020, guid: f65766aacd62ebf42a8075423849b2ad, type: 3}
       propertyPath: m_Model
@@ -32123,6 +32244,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1490771064}
   Top: {fileID: 1631761383}
   Bottom: {fileID: 45001545}
@@ -32292,6 +32418,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 690836646}
   Top: {fileID: 1023427020}
   Bottom: {fileID: 996073988}
@@ -32614,6 +32745,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 2126081441}
   Top: {fileID: 1299707915}
   Bottom: {fileID: 868475229}
@@ -33249,6 +33385,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1789103039}
   Top: {fileID: 1923746590}
   Bottom: {fileID: 453103257}
@@ -34959,7 +35100,7 @@ MonoBehaviour:
   MaxStep: 6000
   raceManager: {fileID: 8878267538908566690}
   invertCheckpointForward: 0
-  speedRange: {x: 1.1, y: 0.15}
+  speedRange: {x: 0.9, y: 0.2}
 --- !u!114 &1501237867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35165,6 +35306,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 815638568}
   Top: {fileID: 1443178544}
   Bottom: {fileID: 123828874}
@@ -35623,6 +35769,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1198392508}
   Top: {fileID: 461102195}
   Bottom: {fileID: 75587673}
@@ -37288,6 +37439,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 257293201}
   Top: {fileID: 1204058418}
   Bottom: {fileID: 10248832}
@@ -37606,6 +37762,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1599544750}
   Top: {fileID: 641959255}
   Bottom: {fileID: 1981268575}
@@ -37992,7 +38153,7 @@ MonoBehaviour:
   MaxStep: 6000
   raceManager: {fileID: 8878267538908566690}
   invertCheckpointForward: 0
-  speedRange: {x: 1.1, y: 0.15}
+  speedRange: {x: 0.9, y: 0.2}
 --- !u!114 &1609902572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39453,6 +39614,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 696110170}
   Top: {fileID: 2027954709}
   Bottom: {fileID: 379678085}
@@ -39690,7 +39856,7 @@ MonoBehaviour:
   MaxStep: 6000
   raceManager: {fileID: 8878267538908566690}
   invertCheckpointForward: 0
-  speedRange: {x: 1.1, y: 0.15}
+  speedRange: {x: 0.9, y: 0.2}
 --- !u!114 &1688557012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40656,6 +40822,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1380942100}
   Top: {fileID: 1094542860}
   Bottom: {fileID: 1073583164}
@@ -40793,6 +40964,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 557128951}
   Top: {fileID: 932363793}
   Bottom: {fileID: 357937682}
@@ -40971,6 +41147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 389518235}
   Top: {fileID: 1661137027}
   Bottom: {fileID: 1801963260}
@@ -41073,11 +41254,6 @@ Transform:
   m_Father: {fileID: 127921534}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 20, z: 0}
---- !u!224 &1729354024 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2281911680600495837, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
-  m_PrefabInstance: {fileID: 2281911679252179890}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1730414220
 GameObject:
   m_ObjectHideFlags: 0
@@ -41692,6 +41868,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1377525460}
   Top: {fileID: 426134935}
   Bottom: {fileID: 681578416}
@@ -42281,6 +42462,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 724785310}
   Top: {fileID: 1332318985}
   Bottom: {fileID: 371892167}
@@ -42946,6 +43132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 2073444530}
   Top: {fileID: 1250845950}
   Bottom: {fileID: 760462992}
@@ -46458,6 +46649,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 183957443}
   Top: {fileID: 353759891}
   Bottom: {fileID: 1849294133}
@@ -46710,6 +46906,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 726109157}
   Top: {fileID: 1587510075}
   Bottom: {fileID: 1640699722}
@@ -47875,6 +48076,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1707372604}
   Top: {fileID: 590894697}
   Bottom: {fileID: 2107286509}
@@ -48183,7 +48389,7 @@ MonoBehaviour:
   MaxStep: 6000
   raceManager: {fileID: 8878267538908566690}
   invertCheckpointForward: 0
-  speedRange: {x: 1.1, y: 0.15}
+  speedRange: {x: 0.9, y: 0.2}
 --- !u!114 &2010775492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48902,6 +49108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 357307995}
   Top: {fileID: 1414119144}
   Bottom: {fileID: 1773935862}
@@ -50318,6 +50529,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1572858689}
   Top: {fileID: 2042845817}
   Bottom: {fileID: 1500165055}
@@ -51029,6 +51245,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 92715341}
   Top: {fileID: 1364975213}
   Bottom: {fileID: 1786411824}
@@ -52192,6 +52413,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< Updated upstream
+=======
     - target: {fileID: 249359529, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
       propertyPath: m_SizeDelta.x
       value: 220
@@ -52206,7 +52429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 249359530, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2281911680119725022, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
       propertyPath: m_SizeDelta.x
@@ -52222,7 +52445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2281911680119725023, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2281911680298322601, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
       propertyPath: m_IsActive
@@ -52240,6 +52463,7 @@ PrefabInstance:
       propertyPath: eliminationTime
       value: 
       objectReference: {fileID: 840405201}
+>>>>>>> Stashed changes
     - target: {fileID: 2281911680600495833, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
       propertyPath: m_Name
       value: UI
@@ -52328,6 +52552,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
     - target: {fileID: 2281911680669529558, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
       propertyPath: m_SizeDelta.x
       value: 325
@@ -52338,12 +52564,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2281911680669529559, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2281911680669529559, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
       propertyPath: m_FontData.m_Alignment
       value: 3
       objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
 --- !u!23 &2651630762449447283
@@ -52576,14 +52803,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1369832816}
     - target: {fileID: 8878267538528605664, guid: 58f957c781c74eb4b92f30eaee714dcc, type: 3}
-      propertyPath: Laps
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8878267538528605664, guid: 58f957c781c74eb4b92f30eaee714dcc, type: 3}
-      propertyPath: reverseCheckPoints
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8878267538528605664, guid: 58f957c781c74eb4b92f30eaee714dcc, type: 3}
       propertyPath: checkPointContainer
       value: 
       objectReference: {fileID: 393146442}
@@ -52642,26 +52861,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8878267538528605664, guid: 58f957c781c74eb4b92f30eaee714dcc, type: 3}
   m_PrefabInstance: {fileID: 8878267538908566689}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143951586}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 212f5b11aea29534f8c92af9776b69e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8878267538908566692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143951586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e587378fc5ee83645bf75c7df8e42164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartDelay: 2.38
-  CountDownLength: 3
 --- !u!1001 &9158994092141695816
 PrefabInstance:
   m_ObjectHideFlags: 0
