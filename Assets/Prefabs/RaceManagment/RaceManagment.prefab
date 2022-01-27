@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8878267538528605667}
   - component: {fileID: 8878267538528605664}
+  - component: {fileID: 8878267538908566692}
   m_Layer: 0
   m_Name: RaceManagment
   m_TagString: Untagged
@@ -48,5 +49,29 @@ MonoBehaviour:
   checkPoints: []
   startFinishLine: {fileID: 0}
   indexOfFstartFinishLine: 0
-  Laps: 3
+  Laps: 10
+  eliminationInterval: 5
+  reverseCheckPoints: 1
   ui: {fileID: 0}
+  playerKart: {fileID: 0}
+  kartPlaceInfo: []
+  kartPlaces: []
+  gameMode: 0
+  kartColours:
+    PlayerKartColour: {r: 1, g: 0, b: 0, a: 1}
+    AIKartColours: []
+  ActiveRacers: 0
+--- !u!114 &8878267538908566692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8878267538528605665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e587378fc5ee83645bf75c7df8e42164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartDelay: 2.38
+  CountDownLength: 3

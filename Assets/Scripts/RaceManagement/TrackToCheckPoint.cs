@@ -9,7 +9,6 @@ public class TrackToCheckPoint : MonoBehaviour
     public float resolution = 1;
 
     public CheckPoint trackerPrefab;
-    public Transform player;
     //private void OnDrawGizmos()
     //{
     //    float length = path.path.length;

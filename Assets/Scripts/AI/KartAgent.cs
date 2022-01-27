@@ -247,11 +247,28 @@ public class KartAgent : Agent, IInput
     {
         ArcadeKart.Stats stats = kart.baseStats;
         bool ModSpeedToNoNet = Random.Range(1, 4) % 2 == 0;
-        stats.TopSpeed = ModSpeedToNoNet switch
+        switch (ModSpeedToNoNet)
         {
-            true => baseSpeed * (Random.Range(0, 2) == 1 ? (kart.place > 1) ? 1f + speedRange.y : 1 : speedRange.x),
-            false => baseSpeed
-        };
+            case true:
+                float speed = baseSpeed;
+                int playerPlace = raceManager.playerKart.place;
+                if(placeCurrent > 1)
+                {
+                    bool slowDown = Random.Range(0,2) == 1;
+                    speed *= slowDown ? speedRange.x : 1f + Random.Range(0.1f, speedRange.y);
+                }
+                else
+                {
+                    speed *= Random.Range(speedRange.x, 1f);
+                }
+
+                stats.TopSpeed = speed;
+                break;
+            case false:
+                stats.TopSpeed = baseSpeed;
+                break;
+        }
+
         kart.baseStats = stats;
     }
 }

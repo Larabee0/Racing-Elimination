@@ -16,6 +16,12 @@ public class CheckPoint : MonoBehaviour
     public Vector3 RightPos { get { return left.transform.position; } }
     public Vector3 CentrePos { get { return transform.position; } }
 
+    public bool LiveEditing;
+    public Vector3 LeftControlPoint;
+    public Vector3 RightControlPoint;
+    public Vector3 TopControlPoint;
+    public Vector3 BottomControlPoint;
+
     public Transform left;
     public Transform Top;
     public Transform Bottom;
@@ -80,6 +86,21 @@ public class CheckPoint : MonoBehaviour
         }
         if (enableControlPoints)
         {
+            if (LiveEditing)
+            {
+                left.transform.localPosition = LeftControlPoint;
+                right.transform.localPosition = RightControlPoint;
+                Top.transform.localPosition = TopControlPoint;
+                Bottom.transform.localPosition = BottomControlPoint;
+            }
+            else
+            {
+                LeftControlPoint = left.transform.localPosition;
+                RightControlPoint = right.transform.localPosition;
+                TopControlPoint = Top.transform.localPosition;
+                BottomControlPoint = Bottom.transform.localPosition;
+            }
+
 
             float centreX = ((left.localPosition + right.localPosition) / 2).x;
             float centreY = (Bottom.localPosition.y + Top.localPosition.y) / 2;
