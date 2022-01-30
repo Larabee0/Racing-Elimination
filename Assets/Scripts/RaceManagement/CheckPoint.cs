@@ -28,6 +28,9 @@ public class CheckPoint : MonoBehaviour
     public Transform right;
     [Range(0.1f, 2f)]
     public float colliderLength = 0.25f;
+    [Range(0.01f, 2f)]
+    public float measurePointDst = 0.5f;
+    public List<Vector3> points = new List<Vector3>();
     public new BoxCollider collider;
     public bool enableControlPoints;
     public bool StartFinishLine = false;
@@ -106,7 +109,15 @@ public class CheckPoint : MonoBehaviour
             float centreY = (Bottom.localPosition.y + Top.localPosition.y) / 2;
             collider.center = new Vector3(centreX, centreY, 0f);
             collider.size = new Vector3(Vector3.Distance(left.localPosition, right.localPosition), Vector3.Distance(Bottom.localPosition, Top.localPosition), colliderLength);
-
+            points.Clear();
+            for (float i = 0; i <= 1f; i+=measurePointDst)
+            {
+                Vector3 point = Vector3.Lerp(left.localPosition, right.localPosition,i);
+                point = transform.TransformPoint(point);
+                point.y = 0f;
+                points.Add(point);
+                Gizmos.DrawSphere(point, measurePointDst * 0.75f);
+            }
         }
 
         SetEnabled();

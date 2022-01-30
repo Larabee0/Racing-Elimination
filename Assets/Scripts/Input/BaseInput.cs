@@ -5,6 +5,8 @@ public struct InputData
     public bool Accelerate;
     public bool Brake;
     public float TurnInput;
+
+    public static InputData NoInput = new() { Accelerate = false, Brake = false, TurnInput = 0 };
 }
 
 public interface IInput

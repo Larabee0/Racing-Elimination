@@ -19,6 +19,7 @@ public class RaceStarter : MonoBehaviour
     {
         if (raceManager.ui != null)
         {
+            raceManager.ui.SetButtons(false);
             raceManager.ui.ShowText("Get Ready!");
             Invoke(nameof(Laps), StartDelay * 0.25f);
             Invoke(nameof(Timer), StartDelay * 0.5f);

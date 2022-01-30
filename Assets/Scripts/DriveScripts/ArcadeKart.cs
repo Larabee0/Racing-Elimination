@@ -155,6 +155,8 @@ public class ArcadeKart : MonoBehaviour
     bool m_HasCollision;
     bool m_InAir = false;
 
+    public bool EnableInput = true;
+
     public void SetCanMove(bool move) => m_CanMove = move;
     public float GetMaxSpeed() => Mathf.Max(m_FinalStats.TopSpeed * kartSpeedMul, m_FinalStats.ReverseSpeed);
 
@@ -232,6 +234,15 @@ public class ArcadeKart : MonoBehaviour
             Input = m_Inputs[i].GenerateInput();
             WantsToDrift = Input.Brake && Vector3.Dot(Rigidbody.velocity, transform.forward) > 0.0f;
         }
+        if (!EnableInput)
+        {
+            Input = InputData.NoInput;
+        }
+    }
+
+    public void DestroyPlayerInput()
+    {
+        Destroy(GetComponent<UniversalInput>());
     }
 
     void TickPowerups()

@@ -22,10 +22,11 @@ public class EliminationMode : IGameMode
         if(ToEliminate == raceManager.playerKart)
         {
             // eliminate Player.
-            ToEliminate.enabled = false;
+            ToEliminate.EnableInput = false;
             raceManager.ActiveRacers--;
             raceManager.ui.ShowText("You lose!");
             raceManager.StopAlertGameMode();
+            End();
         }
         else
         {
@@ -34,9 +35,13 @@ public class EliminationMode : IGameMode
             raceManager.ActiveRacers--;
             if (raceManager.ActiveRacers == 1)
             {
+                raceManager.playerKart.EnableInput = false;
+                raceManager.playerKart.DestroyPlayerInput();
+                
                 // if we get here the play must have won.
                 raceManager.ui.ShowText("You Win!");
                 raceManager.StopAlertGameMode();
+                End();
             }
         }
     }
@@ -44,6 +49,7 @@ public class EliminationMode : IGameMode
     public void End()
     {
         raceManager.SetRunClock(false);
+        raceManager.ui.SetButtons(true);
     }
 
 }

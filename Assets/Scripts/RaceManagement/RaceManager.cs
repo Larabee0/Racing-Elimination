@@ -11,6 +11,7 @@ public class RaceManager : MonoBehaviour
     public List<CheckPoint> checkPoints = new();
     public CheckPoint startFinishLine;
     public int indexOfFstartFinishLine;
+    public int KartCount { get { return karts.Count; } }
     private List<ArcadeKart> karts;
     public Dictionary<ArcadeKart, KartTracker> trackers;
     [Range(1, 50)]
@@ -244,7 +245,7 @@ public class RaceManager : MonoBehaviour
     public void OnKartFinishCircuit(ArcadeKart kart)
     {
         ui.enabled = false;
-        ui.ShowFinished();
+        //ui.ShowFinished();
         ui.ResetTimer();
         ui.TotalTime();
     }
@@ -312,7 +313,7 @@ public class RaceManager : MonoBehaviour
                     if (place > 1)
                     {
                         float inverseLerp = Mathf.InverseLerp(1f, highestPlace, place);
-                        kart.kartSpeedMul = 1f + (inverseLerp * 2f / 10f);
+                        kart.kartSpeedMul = 1f + (inverseLerp * (kart.TryGetComponent<UniversalInput>(out _) ? 3f : 2f) / 10f);
                     }
                     OnPlaceChanged?.Invoke(kart, oldPlace, place);
                     kart.place = value;
@@ -327,20 +328,14 @@ public class RaceManager : MonoBehaviour
         public float GetClosestDistance(CheckPoint checkPoint)
         {
             Vector3 kartPos = kart.transform.position;
-            Vector3 checkCentre = checkPoint.CentrePos;
-            Vector3 checkLeft = checkPoint.RightPos;
-            Vector3 checkRight = checkPoint.LeftPos;
-            checkCentre.y = checkRight.y = checkLeft.y = kartPos.y = 0;
-            Vector3 CentreLeft = (checkCentre + checkLeft) / 2f;
-            Vector3 CentreRight = (checkCentre + checkLeft) / 2f;
+            kartPos.y = 0;
+            float[] distances = new float[checkPoint.points.Count];
+            for (int i = 0; i < distances.Length; i++)
+            {
+                distances[i] =Mathf.Abs( Vector3.Distance(kartPos, checkPoint.points[i]));
+            }
 
-
-            return Mathf.Min(
-                Vector3.Distance(kartPos, checkCentre),
-                Vector3.Distance(kartPos, checkLeft),
-                Vector3.Distance(kartPos, checkRight),
-                Vector3.Distance(kartPos, CentreLeft),
-                Vector3.Distance(kartPos, CentreRight));
+            return Mathf.Min(distances);
         }
 
         public KartTracker(ArcadeKart kart, int laps, int totalCheckPoints,int highestPlace, CheckPoint startLine, CheckPoint finishLine, CheckPoint LapEndPoint)

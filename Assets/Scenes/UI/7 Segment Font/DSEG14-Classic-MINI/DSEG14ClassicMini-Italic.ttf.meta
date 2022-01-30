@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 99b70ee0191e19443b9bccbab0ad0f73
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - DSEG14 Classic Mini
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c7884649913259b46a5c65c098067bbe, type: 3}
+  - {fileID: 12800000, guid: 440a5128410fc3f40a662cade7680d2a, type: 3}
+  - {fileID: 12800000, guid: 52898bb87aa21d240a9cab4a2282c0d8, type: 3}
+  - {fileID: 12800000, guid: d60a9ef0ef79b5f45b4d18031004899e, type: 3}
+  - {fileID: 12800000, guid: 7142c9b20370ef04ea35570782fe1a18, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

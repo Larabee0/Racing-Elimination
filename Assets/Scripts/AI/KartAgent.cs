@@ -36,6 +36,7 @@ public class KartAgent : Agent, IInput
 
     public float Acceleration => _acceleration;
     public float Steering => _steering;
+    public bool SkipStartReset = false;
 
     #region Awake(), Start(), Update()
     private void Awake()
@@ -46,7 +47,8 @@ public class KartAgent : Agent, IInput
         speedRange.y = Mathf.Clamp(speedRange.y, 0f, 0.5f);
         spawnPosition = transform.position;
         spawnRot = transform.rotation;
-        InvokeRepeating(nameof(KartStatMod), Random.Range(2.5f, 5f), Random.Range(5f, 7.5f));
+        if(!kart.TryGetComponent<UniversalInput>(out _))
+            InvokeRepeating(nameof(KartStatMod), Random.Range(2.5f, 5f), Random.Range(2.5f, 5f));
     }
 
     private void Start()
@@ -54,17 +56,35 @@ public class KartAgent : Agent, IInput
         kart.Rigidbody.isKinematic = true;
         kart.tracker.OnCorrectCheckPoint += OnCarCorrectCheck;
         kart.tracker.OnWrongCheckPoint += OnCarWrongCheck;
-        //kart.tracker.OnCircuitComplete += OnRaceEnd;
+        kart.tracker.OnCircuitComplete += OnRaceEnd;
         kart.tracker.OnCircuitStart += OnRaceBegin;
         kart.tracker.OnLapComplete += OnLapComplete;
         kart.tracker.OnPlaceChanged += OnPlaceChanged;
         kart.Rigidbody.isKinematic = false;
     }
 
+    //float StationaryResetTime = 10f;
+    //float StationaryTime = 0f;
+    //float StationarylockOutTime = 5f;
     //private void Update()
     //{
-    //    Debug.DrawRay(raceManager.checkPoints[kart.tracker.nextCheckPointIndex].transform.position, NextChockPointFoward);
+    //    if(kart.LocalSpeed() < kart.baseStats.TopSpeed * 0.1f && StationarylockOutTime <= 0f)
+    //    {
+    //        StationaryTime += Time.deltaTime;
+    //    }
+    //    else
+    //    {
+    //        StationaryTime = 0f;
+    //        StationarylockOutTime -= Time.deltaTime;
+    //    }
+    //    if(StationaryTime > StationaryResetTime)
+    //    {
+    //        AddReward(-4f);
+    //        OnEpisodeBegin();
+    //    }
+    //    
     //}
+
     #endregion
 
     #region AI Events and Data Inputs
@@ -106,7 +126,7 @@ public class KartAgent : Agent, IInput
     public void OnRaceEnd(ArcadeKart agent)
     {
         //AddReward(5f);
-        raceManager.EndAllEpisodes(true);
+        //raceManager.EndAllEpisodes(true);
     }
     #endregion
 
@@ -117,7 +137,7 @@ public class KartAgent : Agent, IInput
         if (agent == kart)
         {
             wrongCheckPoints = 0;
-            AddReward(0.75f);
+            AddReward(0.5f);
         }
     }
 
@@ -130,14 +150,20 @@ public class KartAgent : Agent, IInput
             AddReward(-2f);
             if(wrongCheckPoints > 1)
             {
-                Debug.LogWarning("Turning AI Around");
-                AddReward(-4f);
-                kart.Rigidbody.isKinematic = true;
-                transform.Rotate(new Vector3(0, 1f, 0), 180f, Space.Self);
                 raceManager.trackers[kart].FixCheckPoint();
-                kart.Rigidbody.isKinematic = false;
+                TurnKartAround();
             }
         }
+    }
+
+    private void TurnKartAround()
+    {
+
+        Debug.LogWarning("Turning AI Around");
+        AddReward(-4f);
+        kart.Rigidbody.isKinematic = true;
+        transform.Rotate(new Vector3(0, 1f, 0), 180f, Space.Self);
+        kart.Rigidbody.isKinematic = false;
     }
     #endregion
 
@@ -150,8 +176,14 @@ public class KartAgent : Agent, IInput
 
     public override void OnEpisodeBegin()
     {
-        raceManager.ResetKart(kart);
-        transform.SetPositionAndRotation(spawnPosition, spawnRot);
+        
+        if (SkipStartReset)
+        {
+            raceManager.ResetKart(kart);
+            transform.SetPositionAndRotation(spawnPosition, spawnRot);
+            //SkipStartReset = false;
+        }
+        
         Start();
     }
 
@@ -165,6 +197,7 @@ public class KartAgent : Agent, IInput
         sensor.AddObservation(kart.LocalSpeed());
         AddReward(kart.LocalSpeed() * .001f);
         placeLastObs = placeCurrent;
+        AddReward(Mathf.InverseLerp(1, raceManager.KartCount, placeCurrent) * 0.002f);
     }
     #endregion
 
@@ -247,24 +280,24 @@ public class KartAgent : Agent, IInput
     {
         ArcadeKart.Stats stats = kart.baseStats;
         bool ModSpeedToNoNet = Random.Range(1, 4) % 2 == 0;
+        int playerPlace = (raceManager.playerKart == null) ? int.MaxValue : raceManager.playerKart.place;
         switch (ModSpeedToNoNet)
         {
-            case true:
+            case false:
                 float speed = baseSpeed;
-                int playerPlace = raceManager.playerKart.place;
-                if(placeCurrent > 1)
+                if(placeCurrent > playerPlace)
                 {
-                    bool slowDown = Random.Range(0,2) == 1;
-                    speed *= slowDown ? speedRange.x : 1f + Random.Range(0.1f, speedRange.y);
+                    bool slowDown = Random.Range(0,2) == 1 && !(playerPlace < placeCurrent);
+                    speed *= slowDown ? speedRange.x : 1f + speedRange.y; //Random.Range(0.0001f, speedRange.y);
                 }
                 else
                 {
-                    speed *= Random.Range(speedRange.x, 1f);
+                    speed *= speedRange.x;
                 }
 
                 stats.TopSpeed = speed;
                 break;
-            case false:
+            case true:
                 stats.TopSpeed = baseSpeed;
                 break;
         }

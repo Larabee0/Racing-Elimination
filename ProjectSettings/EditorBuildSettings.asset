@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/FINAL FINAL REAL TRACK/Track 2 Title.unity
+    guid: 5e27bcd577d93f14ab3b84430f1509fe
+  - enabled: 1
+    path: Assets/Scenes/FINAL FINAL REAL TRACK/Track 2 Training.unity
+    guid: f843b0b1582acc2439e1ea0e3315037a
   m_configObjects: {}

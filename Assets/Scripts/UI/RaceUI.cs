@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RaceUI : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class RaceUI : MonoBehaviour
     public Text eliminationTime;
     public Text place;
     public GameObject FinishedText;
+    public GameObject ExitPlayAgainButtons;
 
     private int maxLaps;
     private int currentLap;
@@ -103,5 +105,20 @@ public class RaceUI : MonoBehaviour
     public void ShowEliminationTime()
     {
         eliminationTime.enabled = true;
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void SetButtons(bool shown)
+    {
+        ExitPlayAgainButtons.SetActive(shown);
     }
 }
