@@ -50,6 +50,9 @@ public class EliminationMode : IGameMode
     {
         raceManager.SetRunClock(false);
         raceManager.ui.SetButtons(true);
+        raceManager.ui.enabled = false;
+        raceManager.ui.ResetTimer();
+        raceManager.ui.TotalTime();
     }
 
 }
