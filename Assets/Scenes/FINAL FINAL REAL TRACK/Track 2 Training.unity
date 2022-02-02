@@ -42315,6 +42315,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 840405199, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -885
+      objectReference: {fileID: 0}
     - target: {fileID: 840405201, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -42450,6 +42454,18 @@ PrefabInstance:
     - target: {fileID: 2281911680600495837, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2281911680669529558, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 2281911680669529558, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -400
+      objectReference: {fileID: 0}
+    - target: {fileID: 2281911680669529559, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
+      propertyPath: m_Text
+      value: 'Lap: 00:00.000'
       objectReference: {fileID: 0}
     - target: {fileID: 2281911680669529559, guid: 30aa4b91649b9a74b9caef6b4ba53cf9, type: 3}
       propertyPath: m_Color.b
