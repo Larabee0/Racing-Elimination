@@ -19,6 +19,7 @@ public class RaceStarter : MonoBehaviour
     {
         if (raceManager.ui != null)
         {
+            raceManager.playerKart.GetComponent<UniversalInput>().actions.UI.Disable();
             raceManager.ui.SetButtons(false);
             raceManager.ui.ShowText("Get Ready!");
             Invoke(nameof(Laps), StartDelay * 0.25f);

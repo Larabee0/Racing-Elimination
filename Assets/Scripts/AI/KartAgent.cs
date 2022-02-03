@@ -54,12 +54,15 @@ public class KartAgent : Agent, IInput
     private void Start()
     {
         kart.Rigidbody.isKinematic = true;
-        kart.tracker.OnCorrectCheckPoint += OnCarCorrectCheck;
-        kart.tracker.OnWrongCheckPoint += OnCarWrongCheck;
-        kart.tracker.OnCircuitComplete += OnRaceEnd;
-        kart.tracker.OnCircuitStart += OnRaceBegin;
-        kart.tracker.OnLapComplete += OnLapComplete;
-        kart.tracker.OnPlaceChanged += OnPlaceChanged;
+        if (kart.tracker != null)
+        {
+            kart.tracker.OnCorrectCheckPoint += OnCarCorrectCheck;
+            kart.tracker.OnWrongCheckPoint += OnCarWrongCheck;
+            kart.tracker.OnCircuitComplete += OnRaceEnd;
+            kart.tracker.OnCircuitStart += OnRaceBegin;
+            kart.tracker.OnLapComplete += OnLapComplete;
+            kart.tracker.OnPlaceChanged += OnPlaceChanged;
+        }
         kart.Rigidbody.isKinematic = false;
     }
 

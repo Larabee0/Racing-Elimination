@@ -14,6 +14,8 @@ public class EliminationMode : IGameMode
     {
         raceManager.SetRunClock();
         raceManager.SetAlertGameModeInterval(raceManager.eliminationInterval);
+        raceManager.playerKart.GetComponent<UniversalInput>().actions.UI.Disable();
+        raceManager.playerKart.GetComponent<UniversalInput>().actions.Player.Enable();
     }
 
     public void Pluse()
@@ -48,6 +50,7 @@ public class EliminationMode : IGameMode
 
     public void End()
     {
+        raceManager.playerKart.GetComponent<UniversalInput>().actions.UI.Enable();
         raceManager.SetRunClock(false);
         raceManager.ui.SetButtons(true);
         raceManager.ui.enabled = false;
