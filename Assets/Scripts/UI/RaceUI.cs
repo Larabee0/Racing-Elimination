@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class RaceUI : MonoBehaviour
 {
@@ -109,16 +111,43 @@ public class RaceUI : MonoBehaviour
 
     public void Quit()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
     public void PlayAgain()
     {
+        if (Time.timeScale == 0)
+        {
+            UnPause();
+            return;
+        }
         SceneManager.LoadScene(1);
     }
 
     public void SetButtons(bool shown)
     {
         ExitPlayAgainButtons.SetActive(shown);
+    }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            EventSystem eventSystem = FindObjectOfType<EventSystem>();
+            if (eventSystem.firstSelectedGameObject == null && UniversalInput.ControllerMode)
+            {
+                eventSystem.firstSelectedGameObject = ExitPlayAgainButtons.transform.GetChild(1).gameObject;
+            }
+            Time.timeScale = 0;
+            ExitPlayAgainButtons.transform.GetChild(1).GetComponentInChildren<Text>().text = "Resume";
+            SetButtons(true);
+        }
+    }
+    public void UnPause()
+    {
+        Time.timeScale = 1;
+        SetButtons(false);
+        ExitPlayAgainButtons.transform.GetChild(1).GetComponentInChildren<Text>().text = "One More Go?";
     }
 }

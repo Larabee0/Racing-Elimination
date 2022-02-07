@@ -26,7 +26,8 @@ public class RaceManager : MonoBehaviour
     public List<string> kartPlaceInfo = new();
     public List<ArcadeKart> kartPlaces = new();
     public GameModes gameMode;
-    private IGameMode Game;
+    private IGameMode game;
+    public IGameMode Game {  get { return game; } }
     public KartColourFactory kartColours;
 
     private float clockInternal;
@@ -37,7 +38,7 @@ public class RaceManager : MonoBehaviour
 
     public void Awake()
     {
-        Game = GameModeFactory.CreateGameMode(this, gameMode);
+        game = GameModeFactory.CreateGameMode(this, gameMode);
         playerKart = null;
         path = checkPointContainer.GetComponent<PathCreator>().path;
         List<CheckPoint> cPInternal = new(checkPointContainer.GetComponentsInChildren<CheckPoint>());
@@ -111,7 +112,7 @@ public class RaceManager : MonoBehaviour
             karts[i].enabled = true;
             
         }
-        Game.Start();
+        game.Start();
     }
 
     private void Update()
@@ -123,7 +124,7 @@ public class RaceManager : MonoBehaviour
             if (PluseGame && alerterClock > alertGameModeAfter)
             {
                 alerterClock = 0;
-                Game.Pluse();
+                game.Pluse();
             }
             if(gameMode == GameModes.Elimination)
             {

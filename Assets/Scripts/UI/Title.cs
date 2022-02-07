@@ -22,8 +22,6 @@ public class Title : MonoBehaviour
     {
 
         actions = new UniversalInputActions(); actions.UI.Enable();
-        actions.UI.Green.performed += Play;
-        actions.UI.Green.performed += Exit;
         List<ArcadeKart> karts = new List<ArcadeKart>(FindObjectsOfType<ArcadeKart>());
 
         if (kartColours != null)

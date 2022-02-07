@@ -5,7 +5,7 @@ using UnityEngine;
 public class EliminationMode : IGameMode
 {
     private RaceManager raceManager;
-
+    public bool isRunning = false;
     public EliminationMode(RaceManager raceManager)
     {
         this.raceManager = raceManager;
@@ -16,6 +16,7 @@ public class EliminationMode : IGameMode
         raceManager.SetAlertGameModeInterval(raceManager.eliminationInterval);
         raceManager.playerKart.GetComponent<UniversalInput>().actions.UI.Disable();
         raceManager.playerKart.GetComponent<UniversalInput>().actions.Player.Enable();
+        isRunning = true;
     }
 
     public void Pluse()
@@ -56,6 +57,7 @@ public class EliminationMode : IGameMode
         raceManager.ui.enabled = false;
         raceManager.ui.ResetTimer();
         raceManager.ui.TotalTime();
+        isRunning = false;
     }
 
 }
