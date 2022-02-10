@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -206,6 +206,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578190}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &648829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4490468858073598249, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
+  m_PrefabInstance: {fileID: 939424523}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1149221
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,11 +836,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1632743880}
   Top: {fileID: 1117216912}
   Bottom: {fileID: 612124933}
   right: {fileID: 1375079700}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 11445869}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -2469,11 +2481,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1364721664}
   Top: {fileID: 214752286}
   Bottom: {fileID: 1823272}
   right: {fileID: 1730586784}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 65525532}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -2575,11 +2594,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 563466133}
   Top: {fileID: 1611862002}
   Bottom: {fileID: 1799579700}
   right: {fileID: 1767474486}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 71337664}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -2741,7 +2767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &73971679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2846,6 +2872,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 0
   speedRange: {x: 0.9, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &73971684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2952,6 +2979,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &73971687
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3475,11 +3503,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 358964652}
   Top: {fileID: 1081178244}
   Bottom: {fileID: 1325627144}
   right: {fileID: 1009095903}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 91662527}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -3546,11 +3581,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1082559346}
   Top: {fileID: 1725385518}
   Bottom: {fileID: 122704583}
   right: {fileID: 316334237}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 94195199}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -3617,11 +3659,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1668422498}
   Top: {fileID: 1537654689}
   Bottom: {fileID: 384761125}
   right: {fileID: 1113885553}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 95101814}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -3719,11 +3768,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 285447009}
   Top: {fileID: 1510945350}
   Bottom: {fileID: 1371367471}
   right: {fileID: 1094361666}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 96404397}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -3790,11 +3846,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 2000242556}
   Top: {fileID: 185735102}
   Bottom: {fileID: 650939028}
   right: {fileID: 1198964208}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 97650104}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -4159,11 +4222,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 336853260}
   Top: {fileID: 1411043414}
   Bottom: {fileID: 195858523}
   right: {fileID: 22178157}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 102296558}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -4412,6 +4482,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 1
   speedRange: {x: 0.8, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &108480851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4518,6 +4589,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &108480854
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4618,11 +4690,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 245766779}
   Top: {fileID: 133971518}
   Bottom: {fileID: 482431439}
   right: {fileID: 1341714186}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 112081922}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -5059,11 +5138,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 653086723}
   Top: {fileID: 1401235944}
   Bottom: {fileID: 1060530256}
   right: {fileID: 1180494612}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 122168257}
   enableControlPoints: 0
   StartFinishLine: 1
@@ -5358,11 +5444,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 78194077}
   Top: {fileID: 803172393}
   Bottom: {fileID: 1638174279}
   right: {fileID: 369273829}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 125297512}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -5754,7 +5847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &134415295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5859,6 +5952,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 0
   speedRange: {x: 0.9, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &134415300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5965,6 +6059,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &134415303
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6940,11 +7035,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1845927211}
   Top: {fileID: 873167138}
   Bottom: {fileID: 613859654}
   right: {fileID: 152945385}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 166398082}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -8382,6 +8484,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 1
   speedRange: {x: 0.8, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &206483151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8488,6 +8591,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &206483154
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9648,11 +9752,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 366176831}
   Top: {fileID: 626003306}
   Bottom: {fileID: 442991500}
   right: {fileID: 1369005148}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 238262109}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -10426,6 +10537,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 1
   speedRange: {x: 0.8, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &261702967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10532,6 +10644,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &261702970
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11698,11 +11811,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1545838926}
   Top: {fileID: 1835195558}
   Bottom: {fileID: 1326978468}
   right: {fileID: 1666570987}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 292336299}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -13082,11 +13202,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 491848073}
   Top: {fileID: 189181340}
   Bottom: {fileID: 1312202390}
   right: {fileID: 461523169}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 337485708}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -13246,11 +13373,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1404315654}
   Top: {fileID: 1939761993}
   Bottom: {fileID: 503510162}
   right: {fileID: 1354949786}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 345368776}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -13379,11 +13513,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1072583067}
   Top: {fileID: 1213672109}
   Bottom: {fileID: 1981586400}
   right: {fileID: 276251195}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 354595537}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -13540,7 +13681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &356455087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13645,6 +13786,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 0
   speedRange: {x: 0.9, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &356455092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13751,6 +13893,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &356455095
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14514,11 +14657,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1705120966}
   Top: {fileID: 2068208432}
   Bottom: {fileID: 1607171259}
   right: {fileID: 695948655}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 377617724}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -15293,11 +15443,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1418738983}
   Top: {fileID: 1870146520}
   Bottom: {fileID: 494853246}
   right: {fileID: 490348730}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 417591527}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -16487,11 +16644,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 325446117}
   Top: {fileID: 1602700581}
   Bottom: {fileID: 1713857748}
   right: {fileID: 1485441483}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 455702045}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -17239,6 +17403,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 1
   speedRange: {x: 0.8, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &479175444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17345,6 +17510,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &479175447
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17485,11 +17651,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1812829228}
   Top: {fileID: 290615282}
   Bottom: {fileID: 474445707}
   right: {fileID: 1073342251}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 482213433}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -18442,11 +18615,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1279741065}
   Top: {fileID: 188866520}
   Bottom: {fileID: 174243721}
   right: {fileID: 248242861}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 499652912}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -19571,7 +19751,6 @@ MonoBehaviour:
   path: {fileID: 535851362}
   resolution: 7
   trackerPrefab: {fileID: 2986825389135590219, guid: 969556e82335d0f448ea89363fa16bbf, type: 3}
-  player: {fileID: 939424524}
 --- !u!114 &535851362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19788,11 +19967,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1894315320}
   Top: {fileID: 554859058}
   Bottom: {fileID: 1348338809}
   right: {fileID: 335050910}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 545539881}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -20941,11 +21127,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 100314988}
   Top: {fileID: 1978224140}
   Bottom: {fileID: 1227898546}
   right: {fileID: 1263372412}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 584311297}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -21927,11 +22120,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1691438602}
   Top: {fileID: 1504910627}
   Bottom: {fileID: 930460725}
   right: {fileID: 1572059052}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 614441945}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -21998,11 +22198,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 2103173230}
   Top: {fileID: 632367618}
   Bottom: {fileID: 1209134655}
   right: {fileID: 390715182}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 619884630}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -22462,11 +22669,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1447842786}
   Top: {fileID: 944573684}
   Bottom: {fileID: 1441025998}
   right: {fileID: 686519537}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 628351278}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -23063,11 +23277,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1331796165}
   Top: {fileID: 522759317}
   Bottom: {fileID: 591285215}
   right: {fileID: 1182111826}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 633087595}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -23672,6 +23893,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 1
   speedRange: {x: 0.8, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &646878679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23778,6 +24000,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &646878682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24052,11 +24275,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 952675733}
   Top: {fileID: 86603992}
   Bottom: {fileID: 1442321653}
   right: {fileID: 1784579747}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 649938875}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -24206,11 +24436,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 640628947}
   Top: {fileID: 1322816898}
   Bottom: {fileID: 1847145991}
   right: {fileID: 1406825790}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 652006073}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -24360,11 +24597,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 579371173}
   Top: {fileID: 1316446473}
   Bottom: {fileID: 640292161}
   right: {fileID: 950515031}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 654347432}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -25660,11 +25904,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 403417048}
   Top: {fileID: 1417686050}
   Bottom: {fileID: 2021207487}
   right: {fileID: 1211057712}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 707232969}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -26475,11 +26726,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1000000885}
   Top: {fileID: 992912405}
   Bottom: {fileID: 1988184544}
   right: {fileID: 124916184}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 745639803}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -26767,11 +27025,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 205756888}
   Top: {fileID: 914584747}
   Bottom: {fileID: 40168541}
   right: {fileID: 1386109033}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 750705969}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -27134,11 +27399,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1505038604}
   Top: {fileID: 259621778}
   Bottom: {fileID: 1489814713}
   right: {fileID: 814255326}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 758087814}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -28284,11 +28556,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 625903185}
   Top: {fileID: 2032315012}
   Bottom: {fileID: 175641023}
   right: {fileID: 1691216185}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 776024042}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -29465,11 +29744,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1194902353}
   Top: {fileID: 673550605}
   Bottom: {fileID: 1544312064}
   right: {fileID: 14608875}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 819917798}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -29536,11 +29822,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 807077321}
   Top: {fileID: 716608679}
   Bottom: {fileID: 1926200652}
   right: {fileID: 1893607908}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 822850331}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -30631,11 +30924,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 699679158}
   Top: {fileID: 1837088030}
   Bottom: {fileID: 773564323}
   right: {fileID: 1947068860}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 854533387}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -31598,6 +31898,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 1
   speedRange: {x: 0.8, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &878469718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31704,6 +32005,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &878469721
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32957,11 +33259,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 659373838}
   Top: {fileID: 1508230789}
   Bottom: {fileID: 1016307809}
   right: {fileID: 2108532863}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 926129604}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -33588,6 +33897,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 47692863, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460964414, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460964414, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.231
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460964414, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.189
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490468858073598248, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
+      propertyPath: m_Mass
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 4490468858073598249, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
       propertyPath: m_Name
       value: PCKart
@@ -33598,7 +33927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4490468858073598255, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.82
+      value: 77
       objectReference: {fileID: 0}
     - target: {fileID: 4490468858073598255, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -33638,11 +33967,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
---- !u!4 &939424524 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4490468858073598255, guid: b2792e4be84cdb94eb1f2842a530768c, type: 3}
-  m_PrefabInstance: {fileID: 939424523}
+--- !u!114 &939424529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a77a806fa49fc414c8b67dcc53be4506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &939838756
 GameObject:
   m_ObjectHideFlags: 0
@@ -37990,11 +38326,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 632803890}
   Top: {fileID: 1480684902}
   Bottom: {fileID: 48338885}
   right: {fileID: 1260780540}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1093214049}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -38227,11 +38570,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1788233443}
   Top: {fileID: 1113069947}
   Bottom: {fileID: 892376716}
   right: {fileID: 799051470}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1105951645}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -38675,11 +39025,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1279473732}
   Top: {fileID: 9381733}
   Bottom: {fileID: 2111209800}
   right: {fileID: 871872559}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1115414319}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -40600,11 +40957,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1005166274}
   Top: {fileID: 662155190}
   Bottom: {fileID: 1914900627}
   right: {fileID: 191799965}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1173201252}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -40835,11 +41199,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 177006654}
   Top: {fileID: 1465978055}
   Bottom: {fileID: 768577690}
   right: {fileID: 1847875325}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1179896872}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -41669,11 +42040,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 132187040}
   Top: {fileID: 98484605}
   Bottom: {fileID: 841538372}
   right: {fileID: 5892748}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1210297436}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -42120,11 +42498,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 300384926}
   Top: {fileID: 58475751}
   Bottom: {fileID: 225463789}
   right: {fileID: 678307534}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1214682660}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -42399,7 +42784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1231501618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42504,6 +42889,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 0
   speedRange: {x: 0.9, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &1231501623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42610,6 +42996,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &1231501626
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42740,11 +43127,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 233846125}
   Top: {fileID: 171818209}
   Bottom: {fileID: 919805732}
   right: {fileID: 1302410996}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1235389585}
   enableControlPoints: 0
   StartFinishLine: 1
@@ -42917,7 +43311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1241367835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43022,6 +43416,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 0
   speedRange: {x: 0.9, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &1241367840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43128,6 +43523,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &1241367843
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -44577,11 +44973,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 846796204}
   Top: {fileID: 1882616771}
   Bottom: {fileID: 522683482}
   right: {fileID: 336425277}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1291982411}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -45499,11 +45902,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 2139312645}
   Top: {fileID: 780005444}
   Bottom: {fileID: 1950927918}
   right: {fileID: 459635730}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1328950291}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -45874,6 +46284,7 @@ MonoBehaviour:
   raceManager: {fileID: 8878267540173014158}
   invertCheckpointForward: 1
   speedRange: {x: 0.8, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &1333943987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45980,6 +46391,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &1333943990
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -46559,11 +46971,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 220041087}
   Top: {fileID: 661020463}
   Bottom: {fileID: 751683428}
   right: {fileID: 1257438100}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1349436207}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -47192,7 +47611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1365953248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47297,6 +47716,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 0
   speedRange: {x: 0.9, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &1365953253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47403,6 +47823,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &1365953256
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48497,11 +48918,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1903758344}
   Top: {fileID: 2121796974}
   Bottom: {fileID: 1621971415}
   right: {fileID: 1692987948}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1386467755}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -50333,11 +50761,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 257045302}
   Top: {fileID: 145853983}
   Bottom: {fileID: 1570632071}
   right: {fileID: 1939163825}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1447766183}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -50883,11 +51318,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 217942138}
   Top: {fileID: 1099241472}
   Bottom: {fileID: 987021536}
   right: {fileID: 2136248003}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1468282300}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -51653,6 +52095,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 1
   speedRange: {x: 0.8, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &1486331854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51759,6 +52202,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &1486331857
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -56073,11 +56517,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 138836393}
   Top: {fileID: 1832616320}
   Bottom: {fileID: 10872162}
   right: {fileID: 929816675}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1623646260}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -56554,11 +57005,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 315018730}
   Top: {fileID: 1171677714}
   Bottom: {fileID: 2120666957}
   right: {fileID: 1332191143}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1638922938}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -58071,6 +58529,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 1
   speedRange: {x: 0.8, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &1680032061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58177,6 +58636,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &1680032064
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -58554,11 +59014,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 62195163}
   Top: {fileID: 62916203}
   Bottom: {fileID: 203850006}
   right: {fileID: 1957852406}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1690815623}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -59050,11 +59517,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 754641425}
   Top: {fileID: 1906740324}
   Bottom: {fileID: 133407514}
   right: {fileID: 38370273}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1696924182}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -59121,11 +59595,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 848035614}
   Top: {fileID: 1563249285}
   Bottom: {fileID: 927774906}
   right: {fileID: 128587986}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1697649935}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -59826,7 +60307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1727968767
 Transform:
   m_ObjectHideFlags: 0
@@ -59859,14 +60340,17 @@ MonoBehaviour:
   startFinishLine: {fileID: 0}
   indexOfFstartFinishLine: 0
   Laps: 3
+  eliminationInterval: 5
   reverseCheckPoints: 0
   ui: {fileID: 46897372}
   playerKart: {fileID: 0}
   kartPlaceInfo: []
   kartPlaces: []
+  gameMode: 0
   kartColours:
     PlayerKartColour: {r: 1, g: 0, b: 0, a: 1}
     AIKartColours: []
+  ActiveRacers: 0
 --- !u!1 &1730586783
 GameObject:
   m_ObjectHideFlags: 0
@@ -60306,11 +60790,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1880061418}
   Top: {fileID: 1035693139}
   Bottom: {fileID: 460796911}
   right: {fileID: 912644425}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1748520251}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -60785,7 +61276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9158994091886803382, guid: f65766aacd62ebf42a8075423849b2ad, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9158994091886803382, guid: f65766aacd62ebf42a8075423849b2ad, type: 3}
       propertyPath: m_TagString
@@ -61805,11 +62296,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 114418621}
   Top: {fileID: 283528616}
   Bottom: {fileID: 770102798}
   right: {fileID: 561611961}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1801517980}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -62005,11 +62503,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 2119223094}
   Top: {fileID: 1506381196}
   Bottom: {fileID: 149219010}
   right: {fileID: 1685991040}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1808274264}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -63829,11 +64334,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 49128054}
   Top: {fileID: 689198755}
   Bottom: {fileID: 1367689929}
   right: {fileID: 1152725505}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1864738076}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -64295,8 +64807,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882000965}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -64354,7 +64866,6 @@ MonoBehaviour:
   path: {fileID: 1882000968}
   resolution: 7
   trackerPrefab: {fileID: 2986825389135590219, guid: 969556e82335d0f448ea89363fa16bbf, type: 3}
-  player: {fileID: 939424524}
 --- !u!114 &1882000968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64932,7 +65443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1905118123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65037,6 +65548,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 0
   speedRange: {x: 0.9, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &1905118128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65143,6 +65655,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &1905118131
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -65536,11 +66049,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 2075277116}
   Top: {fileID: 1025621756}
   Bottom: {fileID: 1895865754}
   right: {fileID: 187717386}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 1915993949}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -66746,6 +67266,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 1
   speedRange: {x: 0.8, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &1950018239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66852,6 +67373,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &1950018242
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -67521,7 +68043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1974888889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67626,6 +68148,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 0
   speedRange: {x: 0.9, y: 0.2}
+  SkipStartReset: 0
 --- !u!114 &1974888894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67732,6 +68255,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &1974888897
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -68664,11 +69188,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1961428847}
   Top: {fileID: 1627603278}
   Bottom: {fileID: 1547491119}
   right: {fileID: 1191747470}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 2006846091}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -68871,11 +69402,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1247643381}
   Top: {fileID: 962759594}
   Bottom: {fileID: 961477736}
   right: {fileID: 1004613902}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 2013708269}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -69315,11 +69853,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1029704630}
   Top: {fileID: 1165573472}
   Bottom: {fileID: 1345403793}
   right: {fileID: 1856334251}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 2026757516}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -70586,11 +71131,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 786986384}
   Top: {fileID: 1947282541}
   Bottom: {fileID: 1596025224}
   right: {fileID: 1557251874}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 2094155710}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -70942,11 +71494,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1214056348}
   Top: {fileID: 285577080}
   Bottom: {fileID: 2135566226}
   right: {fileID: 1053910885}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 2105713589}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -71639,11 +72198,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 939368694}
   Top: {fileID: 780988468}
   Bottom: {fileID: 1534968742}
   right: {fileID: 313228797}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 2129686381}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -71710,11 +72276,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dee630649951f4aa26c5bbcaf42063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiveEditing: 0
+  LeftControlPoint: {x: 0, y: 0, z: 0}
+  RightControlPoint: {x: 0, y: 0, z: 0}
+  TopControlPoint: {x: 0, y: 0, z: 0}
+  BottomControlPoint: {x: 0, y: 0, z: 0}
   left: {fileID: 1355776844}
   Top: {fileID: 608339089}
   Bottom: {fileID: 1705670818}
   right: {fileID: 517343275}
   colliderLength: 0.25
+  measurePointDst: 0.5
+  points: []
   collider: {fileID: 2130069026}
   enableControlPoints: 0
   StartFinishLine: 0
@@ -73276,6 +73849,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
+  EnableInput: 1
 --- !u!54 &926719509884017835
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -73369,6 +73943,7 @@ MonoBehaviour:
   raceManager: {fileID: 1727968768}
   invertCheckpointForward: 0
   speedRange: {x: 0.9, y: 0.2}
+  SkipStartReset: 0
 --- !u!1 &926719509884018002
 GameObject:
   m_ObjectHideFlags: 0
@@ -73393,7 +73968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &926719509884018003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73680,14 +74255,17 @@ MonoBehaviour:
   startFinishLine: {fileID: 0}
   indexOfFstartFinishLine: 0
   Laps: 3
+  eliminationInterval: 5
   reverseCheckPoints: 0
   ui: {fileID: 46897372}
   playerKart: {fileID: 0}
   kartPlaceInfo: []
   kartPlaces: []
+  gameMode: 0
   kartColours:
     PlayerKartColour: {r: 1, g: 0, b: 0, a: 1}
     AIKartColours: []
+  ActiveRacers: 0
 --- !u!1 &8878267540173014159
 GameObject:
   m_ObjectHideFlags: 0

@@ -134,11 +134,12 @@ public class RaceUI : MonoBehaviour
     {
         if (context.performed)
         {
-            EventSystem eventSystem = FindObjectOfType<EventSystem>();
-            if (eventSystem.firstSelectedGameObject == null && UniversalInput.ControllerMode)
+            if (Time.timeScale == 0)
             {
-                eventSystem.firstSelectedGameObject = ExitPlayAgainButtons.transform.GetChild(1).gameObject;
+                UnPause();
+                return;
             }
+            FindObjectOfType<EventSystem>().SetSelectedGameObject(ExitPlayAgainButtons.transform.GetChild(1).gameObject);
             Time.timeScale = 0;
             ExitPlayAgainButtons.transform.GetChild(1).GetComponentInChildren<Text>().text = "Resume";
             SetButtons(true);
@@ -149,5 +150,10 @@ public class RaceUI : MonoBehaviour
         Time.timeScale = 1;
         SetButtons(false);
         ExitPlayAgainButtons.transform.GetChild(1).GetComponentInChildren<Text>().text = "One More Go?";
+    }
+
+    public void SetMenuSelection()
+    {
+        FindObjectOfType<EventSystem>().SetSelectedGameObject(ExitPlayAgainButtons.transform.GetChild(1).gameObject);
     }
 }

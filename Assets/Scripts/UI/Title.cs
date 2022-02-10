@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class Title : MonoBehaviour
 {
     public UniversalInputActions actions;
     public KartColourFactory kartColours;
+    public EventSystem eventSystem;
+    public GameObject button;
     public void EliminationMode()
     {
         SceneManager.LoadScene(1);
@@ -20,13 +23,21 @@ public class Title : MonoBehaviour
 
     private void Awake()
     {
-
+        eventSystem = FindObjectOfType<EventSystem>(); 
         actions = new UniversalInputActions(); actions.UI.Enable();
         List<ArcadeKart> karts = new List<ArcadeKart>(FindObjectsOfType<ArcadeKart>());
 
         if (kartColours != null)
         {
             kartColours.PaintKarts(karts);
+        }
+    }
+
+    private void Update()
+    {
+        if(eventSystem.currentSelectedGameObject == null)
+        {
+            eventSystem.SetSelectedGameObject(button);
         }
     }
 
