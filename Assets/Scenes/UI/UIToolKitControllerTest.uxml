@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement>
+        <ui:Button text="A" display-tooltip-when-elided="true" name="A" />
+        <ui:Button text="b" display-tooltip-when-elided="true" name="B" style="-unity-font: url(&apos;project://database/Assets/Scenes/UI/square_wood-7.ttf?fileID=12800000&amp;guid=cfb2c4a7d8d0917479ca506f540e858c&amp;type=3#square_wood-7&apos;); -unity-font-definition: url(&apos;project://database/Assets/Scenes/UI/square_wood-7%20SDF%201.asset?fileID=11400000&amp;guid=99c1473b4fd115c4eba26548c791f140&amp;type=2#square_wood-7 SDF 1&apos;); -unity-font-style: normal;" />
+    </ui:VisualElement>
+</ui:UXML>

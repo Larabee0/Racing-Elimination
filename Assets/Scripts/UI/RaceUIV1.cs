@@ -1,19 +1,18 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
-public class RaceUI : MonoBehaviour
+public class RaceUIV1 : MonoBehaviour
 {
-    private Label lapCounter;
-    private Label timer;
-    private Label eliminationTime;
-    private Label place;
-    private Label FinishedText;
-    private VisualElement ExitPlayAgainButtons;
-    private Button GreenButton;
+    public Text lapCounter;
+    public Text timer;
+    public Text eliminationTime;
+    public Text place;
+    public GameObject FinishedText;
+    public GameObject ExitPlayAgainButtons;
 
     private int maxLaps;
     private int currentLap;
@@ -33,37 +32,18 @@ public class RaceUI : MonoBehaviour
     public int placeToElimination;
     public float TimeTillElimination { set { timeTillElimination = value; SetLapCounter(); } }
 
-    private void Awake()
-    {
-        VisualElement rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
-
-        lapCounter = rootVisualElement.Q<Label>("LapLabel");
-        timer = rootVisualElement.Q<Label>("TimerLabel");
-        eliminationTime = rootVisualElement.Q<Label>("EliminationLabel");
-        place = rootVisualElement.Q<Label>("PlaceLabel");
-        FinishedText = rootVisualElement.Q<Label>("CentreLabel");
-        ExitPlayAgainButtons = rootVisualElement.Q<VisualElement>("ButtonContainer");
-        GreenButton = rootVisualElement.Q<Button>("StartButton");
-
-        GreenButton.RegisterCallback<NavigationSubmitEvent>(ev => PlayAgain());
-        GreenButton.RegisterCallback<ClickEvent>(ev => PlayAgain());
-
-        rootVisualElement.Q<Button>("QuitButton").RegisterCallback<ClickEvent>(ev => Quit());
-        rootVisualElement.Q<Button>("QuitButton").RegisterCallback<NavigationSubmitEvent>(ev => Quit());
-    }
-
     private void SetLapCounter()
     {
         lapCounter.text = gameMode switch
         {
-            GameModes.Laps => string.Format("Lap {0}/{1}", currentLap.ToString("D2"), maxLaps.ToString("D2")),
-            _ => string.Format("Lap {0}", currentLap.ToString("D2"))
+            GameModes.Laps => string.Format("| Lap {0}/{1}", currentLap.ToString("D2"), maxLaps.ToString("D2")),
+            _ => string.Format("| Lap {0}", currentLap.ToString("D2"))
         };
 
         if (gameMode == GameModes.Elimination)
         {
             int timeTillDeath = Mathf.Max(Mathf.RoundToInt(timeTillElimination), 0);
-            eliminationTime.text = String.Format("Eliminating place: {1} in: {0}", timeTillDeath.ToString("D2"), placeToElimination.ToString("D2"));
+            eliminationTime.text = String.Format("Eliminating place: {1} in: {0} |", timeTillDeath.ToString("D2"), placeToElimination.ToString("D2"));
         }
     }
 
@@ -75,7 +55,6 @@ public class RaceUI : MonoBehaviour
     public void TotalTime()
     {
         TimeSpan time = TimeSpan.FromSeconds(timerTotal);
-        timer.style.width = 375;
         timer.text = string.Format("Total: {0}:{1}.{2}", time.Minutes.ToString("D2"), time.Seconds.ToString("D2"), time.Milliseconds.ToString("D3"));
     }
 
@@ -93,39 +72,39 @@ public class RaceUI : MonoBehaviour
 
     public void HideFinished()
     {
-        FinishedText.style.display = DisplayStyle.None;
+        FinishedText.SetActive(false);
     }
 
     public void ShowFinished()
     {
-        FinishedText.text = "Finished";
-        FinishedText.style.display = DisplayStyle.Flex;
+        FinishedText.GetComponent<Text>().text = "Finished";
+        FinishedText.SetActive(true);
     }
 
     public void ShowText(string text)
     {
-        FinishedText.text = text;
-        FinishedText.style.display = DisplayStyle.Flex;
+        FinishedText.GetComponent<Text>().text = text;
+        FinishedText.SetActive(true);
     }
 
     public void ShowPlace()
     {
-        place.style.display = DisplayStyle.Flex;
+        place.enabled = true;
     }
 
     public void ShowLaps()
     {
-        lapCounter.style.display = DisplayStyle.Flex;
+        lapCounter.enabled = true;
     }
 
     public void ShowLapTime()
     {
-        timer.style.display = DisplayStyle.Flex;
+        timer.enabled = true;
     }
 
     public void ShowEliminationTime()
     {
-        eliminationTime.style.display = DisplayStyle.Flex;
+        eliminationTime.enabled = true;
     }
 
     public void Quit()
@@ -146,16 +125,7 @@ public class RaceUI : MonoBehaviour
 
     public void SetButtons(bool shown)
     {
-        ExitPlayAgainButtons.style.display = shown switch
-        {
-            true => DisplayStyle.Flex,
-            false => DisplayStyle.None
-        };
-
-        if (shown)
-        {
-            SetMenuSelection();
-        }
+        ExitPlayAgainButtons.SetActive(shown);
     }
 
     public void Pause(InputAction.CallbackContext context)
@@ -167,19 +137,21 @@ public class RaceUI : MonoBehaviour
                 UnPause();
                 return;
             }
-            GreenButton.text = "Resume";
-            SetButtons(true);
+            FindObjectOfType<EventSystem>().SetSelectedGameObject(ExitPlayAgainButtons.transform.GetChild(1).gameObject);
             Time.timeScale = 0;
+            ExitPlayAgainButtons.transform.GetChild(1).GetComponentInChildren<Text>().text = "Resume";
+            SetButtons(true);
         }
     }
     public void UnPause()
     {
         Time.timeScale = 1;
         SetButtons(false);
-        GreenButton.text = "One More Go?";
+        ExitPlayAgainButtons.transform.GetChild(1).GetComponentInChildren<Text>().text = "One More Go?";
     }
+
     public void SetMenuSelection()
     {
-        FindObjectOfType<EventSystem>().SetSelectedGameObject(FindObjectOfType<PanelEventHandler>().gameObject);
+        FindObjectOfType<EventSystem>().SetSelectedGameObject(ExitPlayAgainButtons.transform.GetChild(1).gameObject);
     }
 }

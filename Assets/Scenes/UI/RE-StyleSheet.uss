@@ -1,0 +1,42 @@
+.unity-text-element {
+    color: rgb(255, 255, 255);
+}
+
+.unity-button {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.GreenButton {
+    background-color: rgba(132, 255, 0, 0.53);
+}
+
+.RedButton {
+    background-color: rgba(255, 49, 0, 0.53);
+}
+
+.GreenButton:hover {
+    background-color: rgb(132, 255, 0);
+}
+
+.unity-button:focus {
+    background-color: rgb(255, 255, 0);
+}
+
+.RedButton:hover {
+    background-color: rgb(255, 49, 0);
+}
+
+.unity-button:active {
+    background-color: rgba(19, 104, 236, 0.53);
+}
+
+.unity-label {
+    color: rgba(255, 49, 0, 255);
+}

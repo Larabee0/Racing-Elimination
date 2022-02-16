@@ -1,17 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class Title : MonoBehaviour
 {
     public UniversalInputActions actions;
     public KartColourFactory kartColours;
-    public EventSystem eventSystem;
-    public GameObject button;
+    private UIDocument document;
     public void EliminationMode()
     {
         SceneManager.LoadScene(1);
@@ -23,9 +21,14 @@ public class Title : MonoBehaviour
 
     private void Awake()
     {
-        eventSystem = FindObjectOfType<EventSystem>(); 
+        document = GetComponent<UIDocument>();
+        //document.rootVisualElement.Q<Button>("StartButton").();
+        document.rootVisualElement.Q<Button>("StartButton").RegisterCallback<NavigationSubmitEvent>(ev=>EliminationMode());
+        document.rootVisualElement.Q<Button>("QuitButton").RegisterCallback<NavigationSubmitEvent>(ev => Quit());
+        document.rootVisualElement.Q<Button>("StartButton").RegisterCallback<ClickEvent>(ev => EliminationMode());
+        document.rootVisualElement.Q<Button>("QuitButton").RegisterCallback<ClickEvent>(ev => Quit());
         actions = new UniversalInputActions(); actions.UI.Enable();
-        List<ArcadeKart> karts = new List<ArcadeKart>(FindObjectsOfType<ArcadeKart>());
+        List<ArcadeKart> karts = new(FindObjectsOfType<ArcadeKart>());
 
         if (kartColours != null)
         {
@@ -33,28 +36,8 @@ public class Title : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Start()
     {
-        if(eventSystem.currentSelectedGameObject == null)
-        {
-            eventSystem.SetSelectedGameObject(button);
-        }
-    }
-
-    private void Play(InputAction.CallbackContext context)
-    {
-
-        if (context.performed)
-        {
-            EliminationMode();
-        }
-    }
-    private void Exit(InputAction.CallbackContext context)
-    {
-
-        if (context.performed)
-        {
-            Quit();
-        }
+        GetComponent<EventSystem>().SetSelectedGameObject(FindObjectOfType<PanelEventHandler>().gameObject);
     }
 }

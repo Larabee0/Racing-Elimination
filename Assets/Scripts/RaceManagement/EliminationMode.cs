@@ -51,8 +51,9 @@ public class EliminationMode : IGameMode
 
     public void End()
     {
+        raceManager.playerKart.GetComponent<UniversalInput>().actions.Player.Disable();
         raceManager.playerKart.GetComponent<UniversalInput>().actions.UI.Enable();
-        raceManager.SetRunClock(false);
+        raceManager.SetRunClock(true);
         raceManager.ui.SetButtons(true);
         raceManager.ui.enabled = false;
         raceManager.ui.ResetTimer();

@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scenes/UI/RE-StyleSheet.uss?fileID=7433441132597879392&amp;guid=b7ae4638cacdcb04d9970c971c7296b3&amp;type=3#RE-StyleSheet" />
+    <ui:VisualElement style="bottom: auto; top: 55.5%; width: auto; align-items: center;">
+        <ui:Button text="Elimination Mode" display-tooltip-when-elided="true" name="StartButton" class="GreenButton" style="width: 600px; height: 120px; font-size: 70px;" />
+        <ui:Button text="Quit" display-tooltip-when-elided="true" name="QuitButton" class="RedButton" style="width: 600px; height: 120px; font-size: 70px;" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -22,10 +22,11 @@ public class RaceStarter : MonoBehaviour
             raceManager.playerKart.GetComponent<UniversalInput>().actions.UI.Disable();
             raceManager.ui.SetButtons(false);
             raceManager.ui.ShowText("Get Ready!");
-            Invoke(nameof(Laps), StartDelay * 0.25f);
-            Invoke(nameof(Timer), StartDelay * 0.5f);
-            Invoke(nameof(Place), StartDelay * 0.75f);
-            if (raceManager.gameMode == GameModes.Elimination) { Invoke(nameof(Elim), StartDelay * 0.8f); }
+            float divider = 1f/4f;
+            if (raceManager.gameMode == GameModes.Elimination) { divider = 1f / 5f; Invoke(nameof(Elim), StartDelay * (divider * 4)); }
+            Invoke(nameof(Laps), StartDelay * divider);
+            Invoke(nameof(Timer), StartDelay * (divider * 2));
+            Invoke(nameof(Place), StartDelay * (divider * 3));
             Invoke(nameof(StartRaceCountDown), StartDelay);
         }
     }
